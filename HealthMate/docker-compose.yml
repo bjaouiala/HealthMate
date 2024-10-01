@@ -1,0 +1,32 @@
+services:
+  postgres:
+    container_name: healthMateDataBase
+    image: postgres
+    environment:
+      POSTGRES_USER: ala
+      POSTGRES_PASSWORD: ala
+      PGDATA: /var/lib/postgresql/data
+      POSTGRES_DB: healthMate
+    ports:
+      - 5432:5432
+    volumes:
+      - postgres:/data/postgres
+    networks:
+      - healthMateNetwork
+
+  javaMailer:
+    container_name: mailer
+    image: maildev/maildev
+    ports:
+      - 1025:1025
+      - 1080:1080
+    networks:
+      - healthMateNetwork
+
+
+volumes:
+  postgres:
+    driver: local
+networks:
+  healthMateNetwork:
+    driver: bridge
