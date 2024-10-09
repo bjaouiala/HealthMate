@@ -1,0 +1,31 @@
+<div class="login-container">
+  <div class="container-fluid card login-container" >
+    <h3 class="text-center">Login</h3>
+    <hr>
+    <form [formGroup]="formGroup">
+      <div class="mb-3" >
+        <label for="login" class="form-label">Email address</label>
+        <div class="text-danger" *ngIf="formGroup.get('email')?.invalid && ( formGroup.get('email')?.dirty || formGroup.get('email')?.touched)"><small style="font-size: 22px">**</small></div>
+        <input formControlName="email" type="email" class="form-control" id="login" placeholder="name@example.com">
+      </div>
+      <div class="mb-3">
+        <label for="password" class="form-label">Password</label>
+        <div class="text-danger" *ngIf="formGroup.get('password')?.invalid && ( formGroup.get('password')?.dirty || formGroup.get('password')?.touched)"><small style="font-size: 22px">**</small></div>
+        <input formControlName="password" type="password" class="form-control" id="password" placeholder="password">
+      </div>
+      <div (click)="login()" class="justify-content-between mb-3" >
+        <button type="button" class="btn btn-primary">
+          <em class="fas fa-sign-in-alt">&nbsp;Sign in</em>
+        </button>
+      </div>
+      <div>
+        Don't have an account?&nbsp;
+        <button (click)="register()" type="button" class="btn btn-link">
+          Register
+        </button>
+      </div>
+    </form>
+
+
+  </div>
+</div>

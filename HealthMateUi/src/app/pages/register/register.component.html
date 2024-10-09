@@ -1,0 +1,60 @@
+<div class="form-container" xmlns="http://www.w3.org/1999/html">
+  <div class="container-fluid card login-container">
+    <h3 class="text-center">Create Account</h3>
+    <hr>
+    <form [formGroup]="registerForm">
+    <div class="mb-3">
+      <label for="firstname" class="form-label">Firstname</label>
+      <div class="text-danger" *ngIf="registerForm.get('firstname')?.invalid && ( registerForm.get('firstname')?.dirty || registerForm.get('firstname')?.touched)"><small style="font-size: 22px">**</small></div>
+      <input formControlName="firstname" type="text" class="form-control" id="firstname" placeholder="Firstname">
+    </div>
+    <div class="mb-3">
+      <label for="lastname" class="form-label">Lastname</label>
+      <div class="text-danger" *ngIf="registerForm.get('lastname')?.invalid && ( registerForm.get('lastname')?.dirty || registerForm.get('lastname')?.touched)"><small style="font-size: 22px">**</small></div>
+      <input formControlName="lastname" type="text" class="form-control" id="lastname" placeholder="Lastname">
+    </div>
+    <div class="mb-3">
+      <label for="login" class="form-label">Email address</label>
+      <div class="text-danger" *ngIf="registerForm.get('email')?.invalid && ( registerForm.get('email')?.dirty || registerForm.get('email')?.touched)"><small style="font-size: 22px">**</small></div>
+      <div class="text-danger" *ngIf="registerForm.get('email')?.errors?.['email']"> <small >email is not valid</small></div>
+      <input formControlName="email" type="email" class="form-control" id="login" placeholder="name@example.com">
+    </div>
+    <div class="mb-3">
+      <label for="password" class="form-label">Password</label>
+
+      <div *ngIf=" registerForm.get('password')?.errors?.['passwordStrength'] && registerForm.get('password')?.touched" class="text-danger"> <small >password must contain an upper case char and one digit </small></div>
+      <input formControlName="password" type="password" class="form-control" id="password" placeholder="password">
+    </div>
+    <div class="mb-3">
+      <label for="phoneNumber" class="form-label">Phone Number</label>
+      <div class="text-danger" *ngIf="registerForm.get('phoneNumber')?.invalid && ( registerForm.get('phoneNumber')?.dirty || registerForm.get('phoneNumber')?.touched)"><small style="font-size: 22px">**</small></div>
+      <input formControlName="phoneNumber" type="text" class="form-control" id="phoneNumber" placeholder="phoneNumber">
+    </div>
+    <div class="mb-3">
+      <label for="address" class="form-label">address</label>
+      <div class="text-danger" *ngIf="registerForm.get('address')?.invalid && ( registerForm.get('address')?.dirty || registerForm.get('address')?.touched)"><small style="font-size: 22px">**</small></div>
+      <input formControlName="address" type="text" class="form-control" id="address" placeholder="address">
+    </div>
+    <div class="mb-3">
+      <label for="role" class="form-label">Account type</label>
+      <select formControlName="role" class="form-select" id="role" aria-label="Country select">
+        <option [value]="Role.DOCTOR" selected>Doctor</option>
+        <option [value]="Role.USER">User</option>
+      </select>
+    </div>
+    <div (click)="register()" class="justify-content-between mb-3" >
+      <button type="button" class="btn btn-primary">
+        <em class="fas fa-sign-in-alt">&nbsp;Register</em>
+      </button>
+    </div>
+    <div>
+      already have an account?&nbsp;&nbsp;
+      <button (click)="login()" type="button" class="btn btn-link">
+        Sign in
+      </button>
+    </div>
+    </form>
+
+  </div>
+
+</div>
