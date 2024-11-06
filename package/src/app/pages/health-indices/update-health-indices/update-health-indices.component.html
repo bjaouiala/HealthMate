@@ -1,0 +1,89 @@
+<p>update-health-indices works!</p>
+<mat-card class="cardWithShadow">
+    <mat-card-content>
+      <h2>Update Health Indices</h2>
+  
+      <form (ngSubmit)="updateHealthIndice()">
+        <div class="mb-3">
+          <mat-form-field appearance="fill" class="w-100">
+            <mat-label>Age</mat-label>
+            <input
+              matInput
+              type="number"
+              [(ngModel)]="healthIndice.age"
+              name="age"
+              required
+              placeholder="Enter age"
+            />
+          </mat-form-field>
+        </div>
+        <div class="mb-3">
+          <mat-form-field appearance="fill" class="w-100">
+            <mat-label>Systolic Blood Pressure</mat-label>
+            <input
+              matInput
+              type="number"
+              [(ngModel)]="healthIndice.systolicBP"
+              name="systolicBP"
+              required
+              placeholder="Enter systolic BP"
+            />
+          </mat-form-field>
+        </div>
+        <div class="mb-3">
+          <mat-form-field appearance="fill" class="w-100">
+            <mat-label>Diastolic Blood Pressure</mat-label>
+            <input
+              matInput
+              type="number"
+              [(ngModel)]="healthIndice.diastolicBP"
+              name="diastolicBP"
+              required
+              placeholder="Enter diastolic BP"
+            />
+          </mat-form-field>
+        </div>
+        <div class="mb-3">
+          <mat-form-field appearance="fill" class="w-100">
+            <mat-label>Blood Sugar</mat-label>
+            <input
+              matInput
+              type="number"
+              [(ngModel)]="healthIndice.bs"
+              name="bs"
+              required
+              placeholder="Enter blood sugar level"
+            />
+          </mat-form-field>
+        </div>
+        <div class="mb-3">
+          <mat-form-field appearance="fill" class="w-100">
+            <mat-label>Body Temperature</mat-label>
+            <input
+              matInput
+              type="number"
+              [(ngModel)]="healthIndice.bodyTemp"
+              name="bodyTemp"
+              required
+              placeholder="Enter body temperature"
+            />
+          </mat-form-field>
+        </div>
+        <div class="mb-3">
+          <mat-form-field appearance="fill" class="w-100">
+            <mat-label>Heart Rate</mat-label>
+            <input
+              matInput
+              type="number"
+              [(ngModel)]="healthIndice.heartRate"
+              name="heartRate"
+              required
+              placeholder="Enter heart rate"
+            />
+          </mat-form-field>
+        </div>
+        <button mat-raised-button color="primary" type="submit">Update Health Index</button>
+      </form>
+    </mat-card-content>
+  </mat-card>
+  

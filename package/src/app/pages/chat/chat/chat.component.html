@@ -1,0 +1,23 @@
+<div class="container mt-4">
+    <mat-card class="cardWithShadow">
+        <mat-card-header>
+            <mat-card-title>Health Chat</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+            <div class="messages" style="height: 300px; overflow-y: auto;">
+                <div *ngFor="let message of messages" class="message">
+                    <strong>{{ message.sender }}:</strong>
+                    <span [innerHTML]="message.content"></span> <!-- Use innerHTML to render HTML -->
+                    <span class="timestamp">{{ message.timestamp }}</span>
+                </div>
+            </div>
+        </mat-card-content>
+        <mat-card-actions>
+            <select [(ngModel)]="selectedHealthIssue" class="form-control">
+                <option *ngFor="let problem of problems" [value]="problem.problem">{{ problem.problem }}</option>
+            </select>
+            <input [(ngModel)]="newMessageContent" placeholder="Type your message..." class="form-control mt-2" />
+            <button (click)="sendMessage()" class="btn btn-primary mt-2">Send</button>
+        </mat-card-actions>
+    </mat-card>
+</div>

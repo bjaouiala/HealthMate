@@ -1,0 +1,76 @@
+<mat-card class="cardWithShadow">
+    <mat-card-content>
+      <mat-card-title>Health Indices</mat-card-title>
+  
+      <div class="table-responsive">
+        <table mat-table [dataSource]="healthIndices" class="mat-elevation-z8">
+
+          <!-- ID Column -->
+          <ng-container matColumnDef="id">
+            <th mat-header-cell *matHeaderCellDef>ID</th>
+            <td mat-cell *matCellDef="let element">{{ element.id }}</td>
+          </ng-container>
+        
+          <!-- Age Column -->
+          <ng-container matColumnDef="age">
+            <th mat-header-cell *matHeaderCellDef>Age</th>
+            <td mat-cell *matCellDef="let element">{{ element.age }}</td>
+          </ng-container>
+        
+          <!-- Systolic BP Column -->
+          <ng-container matColumnDef="systolicBP">
+            <th mat-header-cell *matHeaderCellDef>Systolic BP</th>
+            <td mat-cell *matCellDef="let element">{{ element.systolicBP }}</td>
+          </ng-container>
+        
+          <!-- Diastolic BP Column -->
+          <ng-container matColumnDef="diastolicBP">
+            <th mat-header-cell *matHeaderCellDef>Diastolic BP</th>
+            <td mat-cell *matCellDef="let element">{{ element.diastolicBP }}</td>
+          </ng-container>
+        
+          <!-- Blood Sugar Column -->
+          <ng-container matColumnDef="bs">
+            <th mat-header-cell *matHeaderCellDef>Blood Sugar</th>
+            <td mat-cell *matCellDef="let element">{{ element.bs }}</td>
+          </ng-container>
+        
+          <!-- Body Temperature Column -->
+          <ng-container matColumnDef="bodyTemp">
+            <th mat-header-cell *matHeaderCellDef>Body Temp</th>
+            <td mat-cell *matCellDef="let element">{{ element.bodyTemp }}</td>
+          </ng-container>
+        
+          <!-- Heart Rate Column -->
+          <ng-container matColumnDef="heartRate">
+            <th mat-header-cell *matHeaderCellDef>Heart Rate</th>
+            <td mat-cell *matCellDef="let element">{{ element.heartRate }}</td>
+          </ng-container>
+        
+          <!-- Actions Column -->
+          <ng-container matColumnDef="actions">
+            <th mat-header-cell *matHeaderCellDef>Actions</th>
+            <td mat-cell *matCellDef="let element">
+              <button mat-icon-button (click)="updateHealthIndice(element.id)">
+                <mat-icon color="primary">edit</mat-icon>
+              </button>
+              <button mat-icon-button (click)="deleteHealthIndice(element.id)">
+                <mat-icon color="warn">delete</mat-icon>
+              </button>
+              <button mat-icon-button (click)="showRiskResult(element.id)">
+                <mat-icon color="accent">info</mat-icon> <!-- Icon for showing risk result -->
+              </button>
+            </td>
+          </ng-container>
+        
+          <!-- Header Row -->
+          <tr mat-header-row *matHeaderRowDef="['id', 'age', 'systolicBP', 'diastolicBP', 'bs', 'bodyTemp', 'heartRate', 'actions']"></tr>
+        
+          <!-- Data Rows -->
+          <tr mat-row *matRowDef="let row; columns: ['id', 'age', 'systolicBP', 'diastolicBP', 'bs', 'bodyTemp', 'heartRate', 'actions']"></tr>
+        
+        </table>
+      </div>
+    </mat-card-content>
+  </mat-card>
+  

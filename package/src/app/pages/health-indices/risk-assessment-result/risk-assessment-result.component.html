@@ -1,0 +1,13 @@
+<h2>Risk Assessment Result</h2>
+
+<!-- Display Risk Level -->
+<p><strong>Risk Level:</strong> {{ predictionResult.risk_level }}</p>
+
+<!-- Display Feedback -->
+<p><strong>Feedback:</strong></p>
+<ul>
+  <li *ngFor="let item of predictionResult.feedback">{{ item }}</li>
+</ul>
+
+<!-- Back to Health Indices Link -->
+<a routerLink="/healthindices/list">Back to Health Indices</a>

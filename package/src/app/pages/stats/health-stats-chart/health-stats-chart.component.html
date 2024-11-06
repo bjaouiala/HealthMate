@@ -1,0 +1,37 @@
+<mat-card class="cardWithShadow">
+        <mat-card-header>
+          <mat-card-title>Health Statistics</mat-card-title>
+          <mat-card-subtitle>Average Health Indices</mat-card-subtitle>
+        </mat-card-header>
+      
+        <mat-card-content>
+          <!-- Combined Average Health Indices Chart -->
+          <div style="display:block;">
+            <canvas id="myCombinedChart" style="width:auto; height:auto;"></canvas>
+          </div>
+      
+          <h3>Individual Health Attributes</h3>
+      
+          <!-- Individual Health Attribute Charts arranged in a grid -->
+          <div style="display:flex; flex-wrap: wrap; gap: 20px;">
+            <div style="flex-basis: calc(50% - 10px);">
+              <canvas id="myChartAge" style="width:auto; height:auto;"></canvas>
+            </div>
+            <div style="flex-basis: calc(50% - 10px);">
+              <canvas id="myChartSystolicBP" style="width:auto; height:auto;"></canvas>
+            </div>
+            <div style="flex-basis: calc(50% - 10px);">
+              <canvas id="myChartDiastolicBP" style="width:auto; height:auto;"></canvas>
+            </div>
+            <div style="flex-basis: calc(50% - 10px);">
+              <canvas id="myChartBloodSugar" style="width:auto; height:auto;"></canvas>
+            </div>
+            <div style="flex-basis: calc(50% - 10px);">
+              <canvas id="myChartBodyTemp" style="width:auto; height:auto;"></canvas>
+            </div>
+            <div style="flex-basis: calc(50% - 10px);">
+              <canvas id="myChartHeartRate" style="width:auto; height:auto;"></canvas>
+            </div>
+          </div>
+        </mat-card-content>
+      </mat-card>
