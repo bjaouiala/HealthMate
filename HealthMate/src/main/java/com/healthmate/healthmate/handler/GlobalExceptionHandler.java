@@ -61,6 +61,7 @@ public class GlobalExceptionHandler {
     }
     @ExceptionHandler(Exception.class)
     public ResponseEntity<ExceptionResponse> handler(Exception exception){
+        System.out.println(exception);
         return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
                 .body(
                         ExceptionResponse.builder()
