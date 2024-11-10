@@ -37,7 +37,7 @@ export class AppSideLoginComponent {
   }
 
   submit() {
-    this.authRequest = this.form.value
+    // this.authRequest = this.form.value
     this.router.navigate(['/']);
   }
 }
