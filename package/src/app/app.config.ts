@@ -29,6 +29,7 @@ import { NgScrollbarModule } from 'ngx-scrollbar';
 //Import all material modules
 import { MaterialModule } from './material.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import {ToastrModule} from "ngx-toastr";
 
 export function HttpLoaderFactory(http: HttpClient): any {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -36,7 +37,7 @@ export function HttpLoaderFactory(http: HttpClient): any {
 
 export const appConfig: ApplicationConfig = {
   providers: [
-    provideZoneChangeDetection({ eventCoalescing: true }), 
+    provideZoneChangeDetection({ eventCoalescing: true }),
     provideRouter(
       routes,
       withInMemoryScrolling({
@@ -52,6 +53,14 @@ export const appConfig: ApplicationConfig = {
       FormsModule,
       ReactiveFormsModule,
       MaterialModule,
+      ToastrModule.forRoot({
+        progressBar:true,
+        closeButton:true,
+        newestOnTop:true,
+        tapToDismiss: true,
+        positionClass:'toast-bottom-right',
+        timeOut:5000
+      }),
       TablerIconsModule.pick(TablerIcons),
       NgScrollbarModule,
       TranslateModule.forRoot({
