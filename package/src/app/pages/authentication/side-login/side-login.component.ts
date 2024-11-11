@@ -34,10 +34,6 @@ export class AppSideLoginComponent {
 
   form = new FormGroup({
     email: new FormControl('', [Validators.required, Validators.minLength(6)]),
-  constructor(private router: Router) { }
-
-  form = new FormGroup({
-    uname: new FormControl('', [Validators.required, Validators.minLength(6)]),
     password: new FormControl('', [Validators.required]),
   });
 
@@ -67,7 +63,5 @@ export class AppSideLoginComponent {
         this.toastService.error("something went wrong","Oups !!")
       }
     })
-    // console.log(this.form.value);
-    this.router.navigate(['/']);
   }
 }

@@ -10,7 +10,7 @@ export const routes: Routes = [
       {
         path: '',
         redirectTo: '/authentication/login',
-        redirectTo: '/dashboard',
+ 
         pathMatch: 'full',
       },
       {
