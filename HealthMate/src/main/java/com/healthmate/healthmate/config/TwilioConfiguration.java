@@ -2,9 +2,11 @@ package com.healthmate.healthmate.config;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.scheduling.annotation.EnableScheduling;
 
 @Configuration
 @ConfigurationProperties("twilio")
+@EnableScheduling
 public class TwilioConfiguration {
     private String accountSid;
     private String authToken;

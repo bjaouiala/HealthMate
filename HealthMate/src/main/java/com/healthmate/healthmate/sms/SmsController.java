@@ -6,6 +6,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.time.LocalTime;
+
 @RestController
 @RequestMapping("/sms")
 public class SmsController {
@@ -18,6 +20,16 @@ public class SmsController {
     }
     @PostMapping
     public void sendSms(@RequestBody SmsRequest smsRequest) {
-        smsService.sendSms(smsRequest);
+        LocalTime currentTime = LocalTime.now();
+
+        LocalTime startTime = LocalTime.of(8,0);
+        LocalTime endTime = LocalTime.of(20,0);
+
+        if (currentTime.isAfter(startTime) && currentTime.isBefore(endTime)) {
+            smsService.sendSms(smsRequest);
+        }
+        else{
+            System.out.println("SMS sending is not allowed at this time.");
+        }
     }
 }
