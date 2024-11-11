@@ -10,6 +10,7 @@ export const routes: Routes = [
       {
         path: '',
         redirectTo: '/authentication/login',
+        redirectTo: '/dashboard',
         pathMatch: 'full',
       },
       {
@@ -28,6 +29,22 @@ export const routes: Routes = [
         path: 'extra',
         loadChildren: () =>
           import('./pages/extra/extra.routes').then((m) => m.ExtraRoutes),
+      },
+      {
+        path: 'healthindices',
+        loadChildren: () =>
+          import('./pages/health-indices/health-indices.routes').then((m) => m.HealthIndiceRoutes),
+      },
+
+      {
+        path: 'stats',
+        loadChildren: () =>
+          import('./pages/stats/stats.routes').then((m) => m.StasRouts),
+      },
+      {
+        path: 'chat',
+        loadChildren: () =>
+          import('./pages/chat/chat.routes').then((m) => m.ChatRoutes),
       },
     ],
   },

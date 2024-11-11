@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import {Component} from '@angular/core';
 import {FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators,} from '@angular/forms';
 import {Router, RouterModule} from '@angular/router';
@@ -6,6 +7,16 @@ import {passwordValidator} from "../../../services/auth-service/passwordValidato
 import {RegistrationRequest, Role} from "../../../services/auth-service/model/authenticationModel/RegistrationRequest";
 import {AuthServiceService} from "../../../services/auth-service/auth-service.service";
 import {ToastrService} from "ngx-toastr";
+import { Component } from '@angular/core';
+import {
+  FormGroup,
+  FormControl,
+  Validators,
+  FormsModule,
+  ReactiveFormsModule,
+} from '@angular/forms';
+import { Router, RouterModule } from '@angular/router';
+import { MaterialModule } from '../../../material.module';
 
 @Component({
   selector: 'app-side-register',
@@ -25,6 +36,12 @@ export class AppSideRegisterComponent {
     phoneNumber: new FormControl("",Validators.required),
     address: new FormControl("",Validators.required),
 
+  constructor(private router: Router) {}
+
+  form = new FormGroup({
+    uname: new FormControl('', [Validators.required, Validators.minLength(6)]),
+    email: new FormControl('', [Validators.required]),
+    password: new FormControl('', [Validators.required]),
   });
 
   get f() {
@@ -52,5 +69,7 @@ export class AppSideRegisterComponent {
     })
 
 
+    // console.log(this.form.value);
+    this.router.navigate(['/']);
   }
 }

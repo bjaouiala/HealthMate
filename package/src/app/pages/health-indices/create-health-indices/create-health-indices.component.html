@@ -1,0 +1,87 @@
+<mat-card class="cardWithShadow">
+  <mat-card-content>
+    <form (ngSubmit)="createHealthIndice()" class="p-3">
+      <div class="mb-3">
+        <label for="age" class="form-label">Age</label>
+        <input
+          type="number"
+          class="form-control"
+          id="age"
+          [(ngModel)]="healthIndice.age"
+          name="age"
+          required
+          placeholder="Enter age"
+        />
+      </div>
+  
+      <div class="mb-3">
+        <label for="systolicBP" class="form-label">Systolic Blood Pressure</label>
+        <input
+          type="number"
+          class="form-control"
+          id="systolicBP"
+          [(ngModel)]="healthIndice.systolicBP"
+          name="systolicBP"
+          required
+          placeholder="Enter systolic BP"
+        />
+      </div>
+  
+      <div class="mb-3">
+        <label for="diastolicBP" class="form-label">Diastolic Blood Pressure</label>
+        <input
+          type="number"
+          class="form-control"
+          id="diastolicBP"
+          [(ngModel)]="healthIndice.diastolicBP"
+          name="diastolicBP"
+          required
+          placeholder="Enter diastolic BP"
+        />
+      </div>
+  
+      <div class="mb-3">
+        <label for="bs" class="form-label">Blood Sugar</label>
+        <input
+          type="number"
+          class="form-control"
+          id="bs"
+          [(ngModel)]="healthIndice.bs"
+          name="bs"
+          required
+          placeholder="Enter blood sugar level"
+        />
+      </div>
+  
+      <div class="mb-3">
+        <label for="bodyTemp" class="form-label">Body Temperature</label>
+        <input
+          type="number"
+          class="form-control"
+          id="bodyTemp"
+          [(ngModel)]="healthIndice.bodyTemp"
+          name="bodyTemp"
+          required
+          placeholder="Enter body temperature"
+        />
+      </div>
+  
+      <div class="mb-3">
+        <label for="heartRate" class="form-label">Heart Rate</label>
+        <input
+          type="number"
+          class="form-control"
+          id="heartRate"
+          [(ngModel)]="healthIndice.heartRate"
+          name="heartRate"
+          required
+          placeholder="Enter heart rate"
+        />
+      </div>
+  
+      <button mat-raised-button color="primary" type="submit" class="w-100">Create Health Index</button>
+    </form>
+  </mat-card-content>
+  
+  
+    </mat-card>
