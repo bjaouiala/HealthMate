@@ -1,3 +1,10 @@
+
+twilio:
+  account_sid: AC6277d4bb7daa1a3f784d7eae63cc4ece
+  auth_token: be2525e9968419fdddbd7eda165db2cd
+  trial_number: +15706832019
+
+
 spring:
   datasource:
     driver-class-name: org.postgresql.Driver
@@ -20,6 +27,7 @@ spring:
       mail.smtp.timeout: 3000
       mail.smtp.writetimeout: 5000
       mail.smtp.trust: smtp.gmail.com
+
   jpa:
     hibernate:
       ddl-auto: update
