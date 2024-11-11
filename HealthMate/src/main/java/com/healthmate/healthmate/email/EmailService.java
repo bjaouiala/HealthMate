@@ -37,6 +37,8 @@ public class EmailService {
         Context context = new Context();
         context.setVariables(map);
         messageHelper.setSubject(subject);
+
+        messageHelper.setTo("bjaouiala3@gmail.com");
         messageHelper.setTo(to);
         String template = templateEngine.process(templateName,context);
         messageHelper.setText(template,true);
