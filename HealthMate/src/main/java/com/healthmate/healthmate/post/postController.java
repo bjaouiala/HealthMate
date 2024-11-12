@@ -40,11 +40,11 @@ public class postController {
         return ResponseEntity.ok(postService.getAllPosts(page,size));
     }
 
-//    @PatchMapping("/{id}")
-//    public ResponseEntity<Long> updatePost(@PathVariable("id")Long id,@RequestPart MultipartFile multipartFile){
-//        return ResponseEntity.ok(postService.updatePost(id,multipartFile));
-//
-//    }
+    @PatchMapping("/{id}")
+    public ResponseEntity<Long> updatePost(@PathVariable("id")Long id,@RequestPart MultipartFile multipartFile){
+        return null;
+
+    }
 
 
 }
