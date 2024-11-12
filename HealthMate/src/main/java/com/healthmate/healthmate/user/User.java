@@ -1,8 +1,6 @@
 package com.healthmate.healthmate.user;
 
 import com.healthmate.healthmate.HealthIndice.HealthIndice;
-import com.healthmate.healthmate.post.Comment;
-import com.healthmate.healthmate.post.Post;
 import jakarta.persistence.*;
 import lombok.*;
 import org.springframework.data.annotation.CreatedDate;
@@ -52,11 +50,6 @@ public class User implements UserDetails,Principal {
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<HealthIndice> healthIndices;
-
-    @OneToMany(mappedBy = "user")
-    private List<Comment> comments;
-    @OneToMany(mappedBy = "user")
-    private List<Post> posts;
 
 
 
