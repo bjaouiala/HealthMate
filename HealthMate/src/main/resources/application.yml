@@ -43,6 +43,9 @@ spring:
       max-file-size: 500MB
 
 application:
+  file:
+    upload:
+      photos-output-path: ./uploads
   security:
     jwt:
       secret-key: yhwdxGYjqMr3qRBFFxF3l7si5Q9PfetGI1TD0t4sl06ksSdvyhgLss8YL066tJsZ
