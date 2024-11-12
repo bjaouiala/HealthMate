@@ -4,6 +4,7 @@ import lombok.RequiredArgsConstructor;
 import org.apache.tomcat.util.net.openssl.ciphers.Authentication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.data.domain.AuditorAware;
 import org.springframework.http.HttpHeaders;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.AuthenticationProvider;
@@ -63,6 +64,12 @@ public class BeansConfig {
          return new CorsFilter(source);
 
     }
+
+    @Bean
+    public AuditorAware<String> auditorAware(){
+        return new ApplicationAuditAware();
+    }
+
 
 
 }
