@@ -9,8 +9,8 @@ spring:
   datasource:
     driver-class-name: org.postgresql.Driver
     url: jdbc:postgresql://localhost:5432/healthMate
-    password: ala
-    username: ala
+    password: postgres
+    username: postgres
   application:
     name: healthMate
   mail:
@@ -53,4 +53,4 @@ application:
 server:
   servlet:
     context-path: /api/v1
-  port: 8080
+  port: 9001
