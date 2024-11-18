@@ -1,0 +1,21 @@
+<div *ngIf="loading" class="loading">Loading health goals...</div>
+<div *ngIf="error" class="error">{{ error }}</div>
+
+<div *ngIf="!loading && !error">
+  <h2>Your Health Goals</h2>
+
+  <div *ngFor="let goal of healthGoals" class="goal-item">
+    <!-- Find the predefined goal based on the goal's predefinedGoalId -->
+    <div *ngIf="getPredefinedGoal(goal.id)">
+      <h3>{{ getPredefinedGoal(goal.id)?.title }}</h3>
+      <p>{{ getPredefinedGoal(goal.id)?.description }}</p>
+    </div>
+    <p><strong>Start Date:</strong> {{ goal.startDate | date }}</p>
+    <p><strong>End Date:</strong> {{ goal.endDate | date }}</p>
+    <p><strong>Actual Value:</strong> {{ goal.actualValue }}</p>
+    <p><strong>Target Value:</strong> {{ goal.targetValue }}</p>
+    <p><strong>Status:</strong> {{ goal.status }}</p>
+    <p><strong>User Description:</strong> {{ goal.userDescription }}</p>
+    <button (click)="editGoal(goal.id)">Edit</button>
+  </div>
+</div>

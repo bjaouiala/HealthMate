@@ -1,6 +1,7 @@
 package com.healthmate.healthmate.healthGoals;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -34,17 +35,17 @@ public class HealthGoalController {
         healthGoalService.deletePredefinedGoal(id);
     }
 
-    @PostMapping("/{userId}/{predefinedGoalId}")
+    @PostMapping("/{predefinedGoalId}")
     public HealthGoalResponseDTO createHealthGoal(
-            @PathVariable Long userId,
+            Authentication connctedUser,
             @PathVariable Long predefinedGoalId,
             @RequestBody HealthGoalRequestDTO dto) {
-        return healthGoalService.createHealthGoal(userId, predefinedGoalId, dto);
+        return healthGoalService.createHealthGoal(connctedUser, predefinedGoalId, dto);
     }
 
-    @GetMapping("/{userId}")
-    public List<HealthGoalResponseDTO> getHealthGoalsByUser(@PathVariable Long userId) {
-        return healthGoalService.getGoalsByUser(userId);
+    @GetMapping
+    public List<HealthGoalResponseDTO> getHealthGoalsByUser(Authentication connctedUser) {
+        return healthGoalService.getGoalsByUser(connctedUser);
     }
 
     @PutMapping("/{userId}/{goalId}")

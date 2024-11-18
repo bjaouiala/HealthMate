@@ -10,7 +10,7 @@ export const routes: Routes = [
       {
         path: '',
         redirectTo: '/authentication/login',
- 
+
         pathMatch: 'full',
       },
       {
@@ -35,6 +35,13 @@ export const routes: Routes = [
         loadChildren: () =>
           import('./pages/health-indices/health-indices.routes').then((m) => m.HealthIndiceRoutes),
       },
+      {
+        path: 'healthGoals',
+        loadChildren: () =>
+          import('./pages/health-goals/health-goals.routes').then((m) => m.HealthGoalsRoutes),
+      },
+
+
 
       {
         path: 'stats',
@@ -58,6 +65,11 @@ export const routes: Routes = [
           import('./pages/authentication/authentication.routes').then(
             (m) => m.AuthenticationRoutes
           ),
+      },
+      {
+        path: 'map',
+        loadChildren: () =>
+          import('./pages/mapLeaflet/map.routes').then((m) => m.MapRoutes),
       },
     ],
   },

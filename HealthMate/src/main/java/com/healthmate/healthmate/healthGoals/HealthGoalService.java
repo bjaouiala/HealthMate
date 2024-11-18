@@ -4,6 +4,7 @@ import com.healthmate.healthmate.user.User;
 import com.healthmate.healthmate.user.UserRepository;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
@@ -50,9 +51,10 @@ public class HealthGoalService {
         predefinedHealthGoalRepository.deleteById(id);
     }
 
-    public HealthGoalResponseDTO createHealthGoal(Long userId, Long predefinedGoalId, HealthGoalRequestDTO dto) {
-        User user = userRepository.findById(userId)
-                .orElseThrow(() -> new EntityNotFoundException("User not found with ID " + userId));
+    public HealthGoalResponseDTO createHealthGoal(Authentication connectedUser, Long predefinedGoalId, HealthGoalRequestDTO dto) {
+        User currentUser = (User) connectedUser.getPrincipal();
+        User user = userRepository.findById(currentUser.getId())
+                .orElseThrow(() -> new EntityNotFoundException("User not found with ID " + currentUser.getId()));
 
         PredefinedHealthGoal predefinedGoal = predefinedHealthGoalRepository.findById(predefinedGoalId)
                 .orElseThrow(() -> new EntityNotFoundException("Predefined goal not found with ID " + predefinedGoalId));
@@ -84,8 +86,11 @@ public class HealthGoalService {
         }
     }
 
-    public List<HealthGoalResponseDTO> getGoalsByUser(Long userId) {
-        return healthGoalRepository.findByUserId(userId).stream()
+    public List<HealthGoalResponseDTO> getGoalsByUser(Authentication connectedUser) {
+        User currentUser = (User) connectedUser.getPrincipal();
+        User user = userRepository.findById(currentUser.getId())
+                .orElseThrow(() -> new EntityNotFoundException("User not found with ID " + currentUser.getId()));
+        return healthGoalRepository.findByUserId(user.getId()).stream()
                 .map(healthGoalMapper::toResponseDTO)
                 .collect(Collectors.toList());
     }

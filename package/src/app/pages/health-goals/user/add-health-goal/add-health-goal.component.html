@@ -1,0 +1,62 @@
+<mat-card class="cardWithShadow theme-card">
+  <mat-card-header>
+    <mat-card-title class="m-b-0">Create Health Goal</mat-card-title>
+  </mat-card-header>
+  <mat-card-content class="b-t-1">
+    <form [formGroup]="healthGoalForm" (ngSubmit)="submitForm()">
+      <div class="row">
+        <!-- Predefined Goal -->
+        <div class="col-12" *ngIf="predefinedGoal">
+          <h3> {{ predefinedGoal.title }}</h3>
+          <p>{{ predefinedGoal.description }}</p>
+        </div>
+
+        <!-- Actual Value -->
+        <div class="col-lg-6">
+          <mat-label class="f-w-600 m-b-8 d-block">Actual Value</mat-label>
+          <mat-form-field appearance="outline" class="w-100" color="primary">
+            <input matInput type="number" formControlName="actualValue" placeholder="Enter actual value" />
+          </mat-form-field>
+        </div>
+
+        <!-- Target Value -->
+        <div class="col-lg-6">
+          <mat-label class="f-w-600 m-b-8 d-block">Target Value</mat-label>
+          <mat-form-field appearance="outline" class="w-100" color="primary">
+            <input matInput type="number" formControlName="targetValue" placeholder="Enter target value" />
+          </mat-form-field>
+        </div>
+
+        <!-- Start Date -->
+        <div class="col-lg-6">
+          <mat-label class="f-w-600 m-b-8 d-block">Start Date</mat-label>
+          <mat-form-field appearance="outline" class="w-100">
+            <input matInput type="date" formControlName="startDate" placeholder="Select start date" />
+          </mat-form-field>
+        </div>
+
+        <!-- End Date -->
+        <div class="col-lg-6">
+          <mat-label class="f-w-600 m-b-8 d-block">End Date</mat-label>
+          <mat-form-field appearance="outline" class="w-100">
+            <input matInput type="date" formControlName="endDate" placeholder="Select end date" />
+          </mat-form-field>
+        </div>
+
+        <!-- User Description -->
+        <div class="col-12">
+          <mat-label class="f-w-600 m-b-8 d-block">User Description</mat-label>
+          <mat-form-field appearance="outline" class="w-100">
+            <textarea matInput formControlName="userDescription" placeholder="Enter your description"></textarea>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <!-- Submit Button -->
+      <div class="m-t-12">
+        <button mat-flat-button color="primary" [disabled]="healthGoalForm.invalid">Create Goal</button>
+        <button mat-stroked-button color="warn" type="button" (click)="router.navigate(['/healthGoals/user/user-predefined-health-goals'])">Cancel</button>
+      </div>
+    </form>
+  </mat-card-content>
+</mat-card>
