@@ -6,6 +6,7 @@
     <div class="row">
         <div *ngIf="isLoading" class="loading">Loading goals...</div>
         <div *ngIf="errorMessage" class="error">{{ errorMessage }}</div>
+
         <ul *ngIf="predefinedHealthGoals.length > 0">
           <li *ngFor="let goal of predefinedHealthGoals" class="goal-item">
             <span matListItemTitle class="f-s-16 f-w-600">{{ goal.title }}</span>
@@ -22,6 +23,8 @@
         </ul>
         <p *ngIf="!isLoading && predefinedHealthGoals.length === 0">No predefined health goals found.</p>
   </div>
-    <button mat-raised-button color="primary" routerLink="/healthGoals/admin/predefined-health-goals/create" class="add-button">Add New Goal</button>
+    <div class="m-t-12 actions">
+      <button mat-raised-button color="primary" routerLink="/healthGoals/admin/predefined-health-goals/create" class="add-button">Add New Goal</button>
+    </div>
   </mat-card-content>
 </mat-card>

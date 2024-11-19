@@ -5,6 +5,9 @@ import { HealthGoal } from '../../../../models/health-goal.model';
 import { Router } from '@angular/router';
 import { PredefinedHealthGoal } from '../../../../models/health-goal.model';
 import {DatePipe, NgForOf, NgIf} from "@angular/common";
+import {MatCard, MatCardContent, MatCardHeader, MatCardTitle} from "@angular/material/card";
+import {MatList, MatListItem} from "@angular/material/list";
+import {MatButton} from "@angular/material/button";
 
 @Component({
   selector: 'app-health-goals-list',
@@ -13,7 +16,14 @@ import {DatePipe, NgForOf, NgIf} from "@angular/common";
   imports: [
     DatePipe,
     NgIf,
-    NgForOf
+    NgForOf,
+    MatCard,
+    MatCardHeader,
+    MatCardContent,
+    MatList,
+    MatListItem,
+    MatButton,
+    MatCardTitle
   ],
   standalone: true
 })
@@ -61,9 +71,11 @@ export class HealthGoalsListComponent implements OnInit {
   }
 
   // Method to get the predefined goal based on its ID
-  getPredefinedGoal(goalId: number): PredefinedHealthGoal | undefined {
-    return this.predefinedHealthGoals.find(goal => goal.id === goalId);
+  getPredefinedGoal(predefinedGoalId: number): PredefinedHealthGoal | undefined {
+    return this.predefinedHealthGoals.find(goal => goal.id === predefinedGoalId);
   }
+
+
 
   editGoal(goalId: number): void {
     // Navigate to the edit page with the goal ID

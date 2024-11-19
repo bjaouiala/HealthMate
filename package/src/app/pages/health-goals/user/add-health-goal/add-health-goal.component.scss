@@ -1,0 +1,10 @@
+.actions {
+  display: flex; /* Arrange buttons in a row */
+  justify-content: flex-start; /* Align buttons to the left */
+  gap: 16px; /* Add space between the buttons */
+  margin-top: 12px; /* Maintain top margin as per existing class */
+}
+
+.actions button {
+  min-width: 120px; /* Optional: Ensure buttons have consistent width */
+}

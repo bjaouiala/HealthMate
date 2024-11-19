@@ -1,0 +1,8 @@
+.actions {
+  margin-top: 10px;
+  margin-bottom: 20px; /* Space between description and actions */
+  display: flex; /* Ensures buttons are displayed in a row */
+  gap: 16px; /* Adjust space between buttons */
+  justify-content: flex-start; /* Aligns buttons to the left */
+  margin-left: -8px; /* Moves the button slightly to the left */
+}

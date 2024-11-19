@@ -1,21 +1,42 @@
-<div *ngIf="loading" class="loading">Loading health goals...</div>
-<div *ngIf="error" class="error">{{ error }}</div>
-
-<div *ngIf="!loading && !error">
-  <h2>Your Health Goals</h2>
-
-  <div *ngFor="let goal of healthGoals" class="goal-item">
-    <!-- Find the predefined goal based on the goal's predefinedGoalId -->
-    <div *ngIf="getPredefinedGoal(goal.id)">
-      <h3>{{ getPredefinedGoal(goal.id)?.title }}</h3>
-      <p>{{ getPredefinedGoal(goal.id)?.description }}</p>
+<mat-card class="cardWithShadow theme-card">
+  <mat-card-header>
+    <mat-card-title>Your Health Goals</mat-card-title>
+  </mat-card-header>
+  <mat-card-content class="b-t-1">
+    <div *ngIf="loading" class="loading">Loading health goals...</div>
+    <div *ngIf="error" class="error">{{ error }}</div>
+    <div *ngIf="!loading && !error">
+      <div *ngFor="let goal of healthGoals" class="goal-item">
+        <mat-list style="max-width: 500px">
+          <mat-list-item lines="6">
+            <span matListItemTitle class="f-s-20 f-w-600" style="display: block; margin: 12px 0;">
+              {{ getPredefinedGoal(goal.id)?.title || 'No Title' }}
+            </span>
+            <span matListItemLine class="f-s-20 f-w-300" style="display: block; margin: 12px 0;">
+              {{ getPredefinedGoal(goal.id)?.description || 'No Description' }}
+            </span>
+            <span class="mat-body-1" style="display: block; margin: 12px 0;">
+              <strong>Start Date:</strong> {{ goal.startDate | date }}
+            </span>
+            <span class="mat-body-1" style="display: block; margin: 12px 0;">
+              <strong>End Date:</strong> {{ goal.endDate | date }}
+            </span>
+            <span class="mat-body-1" style="display: block; margin: 12px 0;">
+              <strong>Actual Value:</strong> {{ goal.actualValue }}
+            </span>
+            <span class="mat-body-1" style="display: block; margin: 12px 0;">
+              <strong>Target Value:</strong> {{ goal.targetValue }}
+            </span>
+            <span class="mat-body-1" style="display: block; margin: 12px 0;">
+              <strong>Your Description:</strong> {{ goal.userDescription }}
+            </span>
+            <span class="mat-body-1" style="display: block; margin: 12px 0;">
+              <strong>Status:</strong> {{ goal.status }}
+            </span>
+            <button mat-flat-button color="primary" (click)="editGoal(goal.id)">Edit</button>
+          </mat-list-item>
+        </mat-list>
+      </div>
     </div>
-    <p><strong>Start Date:</strong> {{ goal.startDate | date }}</p>
-    <p><strong>End Date:</strong> {{ goal.endDate | date }}</p>
-    <p><strong>Actual Value:</strong> {{ goal.actualValue }}</p>
-    <p><strong>Target Value:</strong> {{ goal.targetValue }}</p>
-    <p><strong>Status:</strong> {{ goal.status }}</p>
-    <p><strong>User Description:</strong> {{ goal.userDescription }}</p>
-    <button (click)="editGoal(goal.id)">Edit</button>
-  </div>
-</div>
+  </mat-card-content>
+</mat-card>

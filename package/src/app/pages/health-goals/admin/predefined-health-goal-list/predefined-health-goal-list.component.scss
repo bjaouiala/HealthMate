@@ -7,10 +7,24 @@
 }
 
 .actions {
-  margin-top: 20px; /* Space between description and actions */
+  margin-top: 10px;
+  margin-bottom: 20px; /* Space between description and actions */
+  display: flex; /* Ensures buttons are displayed in a row */
+  gap: 16px; /* Adjust space between buttons */
+  justify-content: flex-start; /* Aligns buttons to the left */
+  margin-left: -8px; /* Moves the button slightly to the left */
 }
 
 .add-button {
   margin-top: 30px; /* Space between the last goal and the 'Add New Goal' button */
+  margin-left: 40px;
 }
+
+.row {
+  justify-content: flex-start; /* Ensures the entire row aligns to the left */
+  align-items: center; /* Optional, aligns items vertically */
+  padding-left: 0; /* Ensures no additional left padding */
+  margin-left: 0; /* Removes any unintended left margin */
+}
+
 
