@@ -107,8 +107,11 @@ public class HealthGoalService {
         }
     }
 
-    public HealthGoalResponseDTO updateHealthGoal(Long userId, Long goalId, HealthGoalRequestDTO dto) {
-        HealthGoal goal = healthGoalRepository.findByIdAndUserId(goalId, userId)
+    public HealthGoalResponseDTO updateHealthGoal(Authentication connectedUser, Long goalId, HealthGoalRequestDTO dto) {
+        User currentUser = (User) connectedUser.getPrincipal();
+        User user = userRepository.findById(currentUser.getId())
+                .orElseThrow(() -> new EntityNotFoundException("User not found with ID " + currentUser.getId()));
+        HealthGoal goal = healthGoalRepository.findByIdAndUserId(goalId, user.getId())
                 .orElseThrow(() -> new EntityNotFoundException("Health goal not found for the given user and goal ID."));
 
         validateDates(dto.getStartDate(), dto.getEndDate());

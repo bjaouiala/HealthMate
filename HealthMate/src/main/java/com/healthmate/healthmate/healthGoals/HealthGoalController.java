@@ -48,12 +48,12 @@ public class HealthGoalController {
         return healthGoalService.getGoalsByUser(connctedUser);
     }
 
-    @PutMapping("/{userId}/{goalId}")
+    @PutMapping("/{goalId}")
     public HealthGoalResponseDTO updateHealthGoal(
-            @PathVariable Long userId,
+            Authentication connctedUser,
             @PathVariable Long goalId,
             @RequestBody HealthGoalRequestDTO dto) {
-        return healthGoalService.updateHealthGoal(userId, goalId, dto);
+        return healthGoalService.updateHealthGoal(connctedUser, goalId, dto);
     }
 
     @DeleteMapping("/{userId}/{goalId}")

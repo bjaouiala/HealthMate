@@ -42,9 +42,9 @@ export class HealthGoalService {
   }
 
 
-  updateHealthGoal(goalId: number, userId: number, goal: HealthGoal): Observable<HealthGoal> {
+  updateHealthGoal(goalId: number, goal: HealthGoal): Observable<HealthGoal> {
     return this.httpClient.put<HealthGoal>(
-      `${this.baseService.rootUrl}${this.userHealthGoalsUrl}/${goalId}/${userId}`,
+      `${this.baseService.rootUrl}${this.userHealthGoalsUrl}/${goalId}`,
       goal,
       { headers: this.headers }
     );

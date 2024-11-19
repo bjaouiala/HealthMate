@@ -52,6 +52,7 @@ export class PredefinedHealthGoalFormComponent implements OnInit {
     }
   }
 
+
   loadGoal(goalId: number): void {
     this.healthGoalService.getPredefinedHealthGoals().subscribe({
       next: (goals) => {
@@ -90,7 +91,7 @@ export class PredefinedHealthGoalFormComponent implements OnInit {
     if (this.predefinedHealthGoal) {
       this.healthGoalService.updatePredefinedHealthGoal(this.predefinedHealthGoal.id, this.predefinedHealthGoalForm.value).subscribe({
         next: () => {
-          this.router.navigate(['/admin/predefined-health-goals']);
+          this.router.navigate(['/healthGoals/admin/predefined-health-goals']);
         },
         error: (err) => console.error('Error updating health goal:', err),
       });
