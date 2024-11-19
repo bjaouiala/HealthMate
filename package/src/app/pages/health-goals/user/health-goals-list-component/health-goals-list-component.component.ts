@@ -75,7 +75,10 @@ export class HealthGoalsListComponent implements OnInit {
     return this.predefinedHealthGoals.find(goal => goal.id === predefinedGoalId);
   }
 
-
+  // Method to handle redirection to the user-predefined-health-goals page
+  goToUserPredefinedGoals(): void {
+    this.router.navigate(['/healthGoals/user/user-predefined-health-goals']);
+  }
 
   editGoal(goalId: number): void {
     // Navigate to the edit page with the goal ID

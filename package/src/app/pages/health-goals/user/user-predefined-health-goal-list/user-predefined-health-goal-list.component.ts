@@ -58,4 +58,9 @@ export class UserPredefinedHealthGoalListComponent implements OnInit {
   pickHealthGoal(goalId: number): void {
     this.router.navigate(['/healthGoals/user/health-goals/create'], { queryParams: { predefinedGoalId: goalId } });
   }
+
+  // Method to handle redirection to the health-goals-list page
+  goToHealthGoalsList(): void {
+    this.router.navigate(['/healthGoals/user/health-goals-list']);
+  }
 }

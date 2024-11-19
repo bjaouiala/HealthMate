@@ -34,6 +34,14 @@
 
             <!-- No Health Goals Found -->
             <p *ngIf="!isLoading && predefinedHealthGoals.length === 0">No predefined health goals available.</p>
+
+            <!-- New Button for Redirect -->
+
+        </div>
+        <div style="margin-top: 20px;">
+            <button mat-raised-button color="accent" (click)="goToHealthGoalsList()">
+                Go to Health Goals List
+            </button>
         </div>
     </mat-card-content>
 </mat-card>
