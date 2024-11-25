@@ -1,0 +1,63 @@
+.card-footer{
+  background-color: rgba(128, 128, 128, 0.29);
+}
+i{
+  cursor: pointer;
+}
+div{
+  &.card{
+    max-height: 600px;
+    min-height:600px ;
+    max-width: 500px;
+    min-width: 500px;
+  }
+}
+img{
+  max-height: 250px;
+  min-height: 250px;
+}
+
+.card-footer {
+  background-color: #f8f9fa;
+  padding: 10px;
+}
+
+.comment-input {
+  width: 100%;
+  padding: 8px 12px;
+  border: 1px solid #ccc;
+  border-radius: 20px;
+  font-size: 14px;
+  background-color: #fff;
+  transition: border-color 0.3s ease;
+
+  /* Focus effect */
+  &:focus {
+    border-color: #007bff;
+    outline: none;
+  }
+}
+
+.send-button {
+  background-color: #007bff;
+  border: none;
+  border-radius: 50%;
+  padding: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+
+  /* Icon styling */
+  i {
+    color: white;
+    font-size: 18px;
+  }
+
+  &:hover {
+    background-color: #0056b3;
+  }
+
+  &:focus {
+    outline: none;
+  }
+}
+

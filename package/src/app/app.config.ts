@@ -5,7 +5,7 @@ import {
 } from '@angular/core';
 import {
   HttpClient,
-  provideHttpClient,
+  provideHttpClient, withInterceptors,
   withInterceptorsFromDi,
 } from '@angular/common/http';
 import { routes } from './app.routes';
@@ -31,6 +31,7 @@ import { MaterialModule } from './material.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import {ToastrModule} from "ngx-toastr";
+import {authInterceptor} from "./services/auth.interceptor";
 
 export function HttpLoaderFactory(http: HttpClient): any {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -38,7 +39,8 @@ export function HttpLoaderFactory(http: HttpClient): any {
 
 export const appConfig: ApplicationConfig = {
   providers: [
-    provideZoneChangeDetection({ eventCoalescing: true }), 
+    provideHttpClient(withInterceptors([authInterceptor])),
+    provideZoneChangeDetection({ eventCoalescing: true }),
     provideRouter(
       routes,
       withInMemoryScrolling({

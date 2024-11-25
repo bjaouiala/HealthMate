@@ -1,0 +1,99 @@
+<div class="profile-container border rounded shadow p-5" style="height: 100vh; width: 100%; overflow-y: auto; font-family: Arial, sans-serif;">
+  <!-- Profile Header -->
+  <div class="profile-header d-flex gap-4 align-items-center border-bottom pb-4 mb-4">
+    <div class="avatar" style="position: relative; flex-shrink: 0;">
+      <img src="https://via.placeholder.com/150" alt="User Avatar" class="rounded-circle" style="width: 150px; height: 150px; object-fit: cover; border: 3px solid #007bff;">
+      <!-- Image Update Icon (Bottom-Right Corner) -->
+      <div class="image-update-icon" style="position: absolute; bottom: 5px; right: 5px; cursor: pointer; font-size: 1.5rem; color: #007bff;" title="Click to update image">
+        <i class="fa-regular fa-image"></i>
+      </div>
+    </div>
+    <div class="user-info">
+      <h2 class="fw-bold mb-2" style="color: #333; font-size: 1.5rem;">{{ user.firstname }} {{ user.lastname }}</h2>
+      <p class="text-muted mb-2" style="font-size: 1.1rem;">{{ user.email }}</p>
+    </div>
+  </div>
+
+  <!-- User Details Section -->
+  <div class="details mt-4 mb-5">
+    <h5 class="fw-bold border-bottom pb-2" style="font-size: 1.3rem; color: dodgerblue;">User Details</h5>
+    <div class="mt-3" style="font-size: 1.1rem;">
+      <!-- Phone Number -->
+      <div>
+        <strong>Phone Number:</strong>&nbsp;&nbsp;
+        <span *ngIf="!isEditingPhoneNumber">{{ user.phoneNumber }}</span>&nbsp;&nbsp;
+        <input *ngIf="isEditingPhoneNumber" type="text" [(ngModel)]="user.phoneNumber" class="form-control d-inline w-auto">
+        <i style="cursor: pointer" class="fa-solid fa-pen-to-square" (click)="toggleEdit('phoneNumber')"></i>
+      </div>
+
+      <!-- Address -->
+      <div>
+        <strong>Address:</strong>&nbsp;&nbsp;
+        <span *ngIf="!isEditingAddress">{{ user.address }}</span>&nbsp;&nbsp;
+        <input *ngIf="isEditingAddress" type="text" [(ngModel)]="user.address" class="form-control d-inline w-auto">
+        <i style="cursor: pointer" class="fa-solid fa-pen-to-square" (click)="toggleEdit('address')"></i>
+      </div>
+
+      <!-- Firstname -->
+      <div>
+        <strong>Firstname:</strong>&nbsp;&nbsp;
+        <span *ngIf="!isEditingFirstname">{{ user.firstname }}</span>&nbsp;&nbsp;
+        <input *ngIf="isEditingFirstname" type="text" [(ngModel)]="user.firstname" class="form-control d-inline w-auto">
+        <i style="cursor: pointer" class="fa-solid fa-pen-to-square" (click)="toggleEdit('firstname')"></i>
+      </div>
+
+      <!-- Lastname -->
+      <div>
+        <strong>Lastname:</strong>&nbsp;&nbsp;
+        <span *ngIf="!isEditingLastname">{{ user.lastname }}</span>&nbsp;&nbsp;
+        <input *ngIf="isEditingLastname" type="text" [(ngModel)]="user.lastname" class="form-control d-inline w-auto">
+        <i style="cursor: pointer" class="fa-solid fa-pen-to-square" (click)="toggleEdit('lastname')"></i>
+      </div>
+    </div>
+  </div>
+
+  <!-- Account Status Section -->
+  <div class="account-status mt-4 mb-5">
+    <h5 class="fw-bold border-bottom pb-2" style="font-size: 1.3rem; color: dodgerblue;">Account Status</h5>
+    <p style="font-size: 1.1rem;">
+      <strong>Account Enabled:</strong>
+      <span [ngClass]="user.enabled ? 'text-success' : 'text-danger'">
+        {{ user.enabled ? 'Yes' : 'No' }}
+      </span>
+    </p>
+    <p style="font-size: 1.1rem;">
+      <strong>Account Locked:</strong>
+      <span [ngClass]="user.accountLocked ? 'text-danger' : 'text-success'">
+        {{ user.accountLocked ? 'Yes' : 'No' }}
+      </span>
+    </p>
+  </div>
+
+  <!-- Password Change Section -->
+  <div *ngIf="isChangingPassword" class="mt-4 mb-5">
+    <h5 class="fw-bold border-bottom pb-2" style="font-size: 1.3rem; color: #333;">Change Password</h5>
+    <div class="mt-3" style="font-size: 1.1rem;">
+      <div>
+        <strong>New Password:</strong>&nbsp;&nbsp;
+        <input type="password" [(ngModel)]="newPassword" class="form-control d-inline w-auto" placeholder="Enter new password" (input)="validatePassword()">
+      </div>
+      <div>
+        <strong>Confirm Password:</strong>&nbsp;&nbsp;
+        <input type="password" [(ngModel)]="confirmPassword" class="form-control d-inline w-auto" placeholder="Confirm new password" (input)="validatePassword()">
+      </div>
+      <div *ngIf="passwordError" class="text-danger mt-2">
+        {{ passwordError }}
+      </div>
+    </div>
+  </div>
+
+  <!-- Separate Change Password Button -->
+  <div class="text-end mt-4">
+    <button (click)="togglePasswordChange()" class="btn btn-secondary px-4 py-2" style="font-size: 1rem;">
+      {{ isChangingPassword ? 'Cancel' : 'Change Password' }}
+    </button>
+  </div>
+  <div class="text-end mt-4">
+    <button (click)="updateUser()" class="btn btn-primary px-4 py-2" style="font-size: 1rem;">Save Changes</button>
+  </div>
+</div>

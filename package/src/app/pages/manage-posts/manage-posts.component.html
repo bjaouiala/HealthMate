@@ -1,0 +1,32 @@
+<div class="p-2">
+  <h2>Manage my posts</h2>
+
+  <div class="d-flex gap-2">
+    <div class="col-3">
+      <img class="rounded-1" width="100%" height="100%" [src]="selectedPicture" alt="...">
+      <div class="mt-2"></div>
+      <input (change)="onFileSelected($event)"
+             class="form-control"
+             type="file"
+             id="formFile"
+             accept="image/*">
+    </div>
+    <div class="col-9">
+      <form class="row g-3">
+        <div class="col-12">
+          <label for="description" class="form-label">Description</label>
+          <input [(ngModel)]="request.description" id="description" type="text" class="form-control" placeholder="Post description" name="description">
+        </div>
+        <div class="d-flex justify-content-end gap-2 col-12">
+          <button type="submit" class="btn btn-outline-primary"  (click)="savePost()" >
+            <i class="fas fa-save"></i>&nbsp;Save
+          </button>
+          <a routerLink="/books/my-books" class="btn btn-link text-danger">
+            <i class="fas fa-times"></i>&nbsp;Cancel
+          </a>
+        </div>
+      </form>
+    </div>
+  </div>
+
+</div>

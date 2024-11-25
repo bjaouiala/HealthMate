@@ -4,6 +4,7 @@ import {BaseService} from "./base.service";
 import {AuthRequest} from "./model/authenticationModel/authRequest";
 import {AuthResponse} from "./model/authenticationModel/authResponse";
 import {RegistrationRequest} from "./model/authenticationModel/RegistrationRequest";
+import {UserResponse} from "./model/UserResponse";
 
 @Injectable({
   providedIn: 'root'
@@ -13,6 +14,7 @@ export class AuthServiceService {
   private readonly registerUrl = "/auth/register"
   private readonly activationAccountUrl="/auth/activation-account"
   private readonly resentCodeUrl= "/auth/resent-CodeConfirmation"
+  private readonly userUrl:string="/users"
 
   constructor(private httpClient:HttpClient,private baseService:BaseService) {}
 
@@ -26,6 +28,13 @@ export class AuthServiceService {
 
   activationAccount(param:ActivateAccount$Param){
     return this.httpClient.get(`${this.baseService.rootUrl}${this.activationAccountUrl}`,{params:{...param}})
+  }
+
+  getCurrentUser(){
+    return this.httpClient.get<UserResponse>(`${this.baseService.rootUrl}${this.userUrl}`)
+  }
+  updateUser(userResponse:UserResponse){
+    return this.httpClient.patch<UserResponse>(`${this.baseService.rootUrl}${this.userUrl}`,userResponse)
   }
 
 

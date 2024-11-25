@@ -1,7 +1,7 @@
 package com.healthmate.healthmate.user;
 
 import com.healthmate.healthmate.HealthIndice.HealthIndice;
-import com.healthmate.healthmate.post.Comment;
+import com.healthmate.healthmate.comment.Comment;
 import com.healthmate.healthmate.post.Post;
 import jakarta.persistence.*;
 import lombok.*;

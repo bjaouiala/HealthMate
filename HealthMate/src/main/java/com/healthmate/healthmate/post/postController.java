@@ -27,7 +27,7 @@ public class postController {
     public ResponseEntity<PageResponse<PostResponse>> getPostByUserId(
                                                                       Authentication connectedUser,
                                                                       @RequestParam(name = "page",defaultValue = "0",required = false) Integer page,
-                                                                      @RequestParam(name = "page",defaultValue = "2",required = false) Integer size
+                                                                      @RequestParam(name = "size",defaultValue = "2",required = false) Integer size
                                                                       ){
         return ResponseEntity.ok(postService.getPostByUserId(connectedUser,page,size));
 
@@ -35,7 +35,7 @@ public class postController {
     @GetMapping
     public ResponseEntity<PageResponse<PostResponse>> getAllPosts(
                                                                       @RequestParam(name = "page",defaultValue = "0",required = false) Integer page,
-                                                                      @RequestParam(name = "page",defaultValue = "2",required = false) Integer size
+                                                                      @RequestParam(name = "size",defaultValue = "2",required = false) Integer size
                                                                       ){
         return ResponseEntity.ok(postService.getAllPosts(page,size));
     }

@@ -1,32 +1,31 @@
-<div class="row">
-    @for(productcard of productcards; track productcard.title) {
-    <div class="col-sm-6 col-lg-3">
-        <mat-card class="cardWithShadow productcard overflow-hidden">
-            <a routerLink="/widgets/cards">
-                <img src="{{ productcard.imgSrc }}" alt="imgSrc" class="w-100" mat-card-image />
-            </a>
-            <mat-card-content class="p-b-24 p-t-12 position-relative">
-                <button mat-mini-fab color="primary" class="icon-30 cart-btn" matTooltip="Add to Cart">
-                    <i-tabler name="basket" class="icon-16"></i-tabler>
-                </button>
-                <mat-card-title class="mat-headline-2 f-s-16 m-b-4">{{
-                    productcard.title
-                    }}</mat-card-title>
-                <div class="d-flex align-items-center justify-content-between">
-                    <div class="d-flex align-items-center">
-                        <h6 class="mat-body-2 f-w-600">${{ productcard.price }}</h6>
-                        <span class="f-s-14 m-l-4 text-decoration-line-through">${{ productcard.rprice }}</span>
-                    </div>
-                    <div class="m-l-auto d-flex gap-4">
-                        <span><i-tabler name="star" class="fill-warning icon-18"></i-tabler></span>
-                        <span><i-tabler name="star" class="fill-warning icon-18"></i-tabler></span>
-                        <span><i-tabler name="star" class="fill-warning icon-18"></i-tabler></span>
-                        <span><i-tabler name="star" class="fill-warning icon-18"></i-tabler></span>
-                        <span><i-tabler name="star" class="fill-warning icon-18"></i-tabler></span>
-                    </div>
-                </div>
-            </mat-card-content>
-        </mat-card>
+<div class="card border-4 mr-5" style="width:20rem; display: flex; flex-direction: column; height: 100%;">
+  <img  [src]="postFile" class="card-img-top" alt="..." />
+
+  <div class="card-body" style="flex-shrink: 0;">
+    <h6 class="card-title fs-6 text-nowrap fw-bold mb-1">
+      <i class="fa-solid fa-club"></i>&nbsp;{{post.createdDate | date: 'mediumDate'}}
+    </h6>
+    <hr />
+    <p class="card-text">{{post.description}}</p>
+  </div>
+
+  <div class="card-body overflow-auto" style="flex-grow: 1; max-height: 150px;">
+    <div *ngFor="let comment of comments" class="comment mb-3 p-2 border rounded">
+      <h6 class="fw-bold mb-1">
+        <i class="fa-solid fa-user"></i> {{ comment.username }}
+      </h6>
+      <p class="mb-0">{{ comment.comment }}</p>
+      <div class="text-end text-muted fs-6 mt-2 comment-date">
+        <p style="font-size: 12px" class="fw-bold">{{ comment.createdDate | date: 'mediumDate' }}</p>
+      </div>
     </div>
-    }
+  </div>
+
+  <div class="card-footer d-flex gap-2 justify-content-between align-items-center"
+       style="position: sticky; bottom: 0; background-color: white;">
+    <input [(ngModel)]="request.comment" type="text" class="comment-input" placeholder="Add a comment..." />
+    <button class="send-button" (click)="saveComment(post.id)">
+      <i class="fa-solid fa-paper-plane"></i>
+    </button>
+  </div>
 </div>

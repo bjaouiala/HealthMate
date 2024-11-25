@@ -10,13 +10,17 @@ export const routes: Routes = [
       {
         path: '',
         redirectTo: '/authentication/login',
- 
+
         pathMatch: 'full',
       },
       {
         path: 'dashboard',
         loadChildren: () =>
           import('./pages/pages.routes').then((m) => m.PagesRoutes),
+      },{
+      path: "posts",
+        loadChildren: ()=> import("./pages/post-list/post-route").then((m)=>m.postRoute)
+
       },
       {
         path: 'ui-components',
@@ -45,7 +49,12 @@ export const routes: Routes = [
         path: 'chat',
         loadChildren: () =>
           import('./pages/chat/chat.routes').then((m) => m.ChatRoutes),
-      },
+      },{
+      path:"users",
+        loadChildren: () =>
+        import('./pages/user-profile/UserRouter').then((m)=> m.UserRouter)
+
+      }
     ],
   },
   {

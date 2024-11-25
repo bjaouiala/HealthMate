@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="schema">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/HealthMate/.idea/dataSources/abefe2ba-20c8-4d38-9ef1-3c976fb9d97b/storage_v2/_src_/database/healthMate.ge8YNg/schema/pg_catalog.0S1ZNQ.zip!/" />
+      <root url="jar://$PROJECT_DIR$/HealthMate/.idea/dataSources/abefe2ba-20c8-4d38-9ef1-3c976fb9d97b/storage_v2/_src_/database/healthMate.ge8YNg/schema/information_schema.FNRwLQ.zip!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

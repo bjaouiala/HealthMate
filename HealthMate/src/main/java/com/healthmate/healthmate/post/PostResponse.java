@@ -2,6 +2,7 @@ package com.healthmate.healthmate.post;
 
 import lombok.*;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 @Getter
@@ -10,8 +11,9 @@ import java.util.Date;
 @AllArgsConstructor
 @NoArgsConstructor
 public class PostResponse {
+    private Long id;
     private String description;
-    private Date createdDate;
+    private LocalDate createdDate;
     private String createdBy;
     private byte[] postFile;
 

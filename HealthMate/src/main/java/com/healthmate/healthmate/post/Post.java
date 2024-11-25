@@ -1,5 +1,6 @@
 package com.healthmate.healthmate.post;
 
+import com.healthmate.healthmate.comment.Comment;
 import com.healthmate.healthmate.user.User;
 import jakarta.persistence.*;
 import lombok.*;
@@ -9,6 +10,7 @@ import org.springframework.data.annotation.LastModifiedBy;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 
@@ -29,7 +31,7 @@ public class Post {
     @LastModifiedBy
     private String lastModifiedBy;
     @CreatedDate
-    private Date createdDate;
+    private LocalDate createdDate;
     @LastModifiedDate
     private Date lastModifiedDate;
     private String description;

@@ -10,6 +10,7 @@ import org.springframework.data.annotation.LastModifiedBy;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 @Entity
@@ -29,7 +30,7 @@ public class Comment {
     @LastModifiedBy
     private String lastModifiedBy;
     @CreatedDate
-    private Date createdDate;
+    private LocalDate createdDate;
     @LastModifiedDate
     private Date lastModifiedDate;
     @ManyToOne

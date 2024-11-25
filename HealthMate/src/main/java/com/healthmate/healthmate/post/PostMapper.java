@@ -19,6 +19,7 @@ public class PostMapper {
 
     public PostResponse fromPost(Post post) {
        return PostResponse.builder()
+               .id(post.getId())
                 .postFile(FileUtils.readFileFromLocation(post.getPostPath()))
                 .createdDate(post.getCreatedDate())
                 .description(post.getDescription())

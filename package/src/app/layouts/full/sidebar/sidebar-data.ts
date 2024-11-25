@@ -32,6 +32,18 @@ export const navItems: NavItem[] = [
     route: '/ui-components/lists',
   },
   {
+    displayName: 'post-list',
+    iconName: 'list',
+    bgcolor: 'success',
+    route: '/posts',
+  },
+  {
+    displayName: 'My post',
+    iconName: 'list',
+    bgcolor: 'success',
+    route: '/posts/my-posts',
+  },
+  {
     displayName: 'Menu',
     iconName: 'layout-navbar-expand',
     bgcolor: 'error',
