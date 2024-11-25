@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
 import { HealthGoalService } from '../../../../services/HealthGoals-service/health-goals-service.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { PredefinedHealthGoal } from '../../../../models/health-goal.model';
+import { PredefinedGoal } from '../../../../models/health-goal.model';
 import { HealthGoal } from '../../../../models/health-goal.model';
 import {NgIf} from "@angular/common";
 import {MatCard, MatCardContent, MatCardHeader, MatCardTitle} from "@angular/material/card";
@@ -41,7 +41,7 @@ import {
 export class AddHealthGoalComponent implements OnInit {
   healthGoalForm: FormGroup;
   predefinedGoalId: number | null = null;
-  predefinedGoal: PredefinedHealthGoal | null = null;
+  predefinedGoal: PredefinedGoal | null = null;
 
   constructor(
     private fb: FormBuilder,

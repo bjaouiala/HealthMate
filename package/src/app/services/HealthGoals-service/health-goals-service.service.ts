@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { BaseService } from '../auth-service/base.service';
-import { HealthGoal, PredefinedHealthGoal } from '../../models/health-goal.model';
+import { HealthGoal, PredefinedGoal } from '../../models/health-goal.model';
 import { Observable } from 'rxjs';
 import { TokenService } from '../auth-service/token.service'; // Import TokenService
 
@@ -50,31 +50,31 @@ export class HealthGoalService {
     );
   }
 
-  deleteHealthGoal(goalId: number, userId: number): Observable<void> {
+  deleteHealthGoal(goalId: number): Observable<void> {
     return this.httpClient.delete<void>(
-      `${this.baseService.rootUrl}${this.userHealthGoalsUrl}/${goalId}/${userId}`,
+      `${this.baseService.rootUrl}${this.userHealthGoalsUrl}/${goalId}`,
       { headers: this.headers }
     );
   }
 
   // Predefined Health Goals
-  getPredefinedHealthGoals(): Observable<PredefinedHealthGoal[]> {
-    return this.httpClient.get<PredefinedHealthGoal[]>(
+  getPredefinedHealthGoals(): Observable<PredefinedGoal[]> {
+    return this.httpClient.get<PredefinedGoal[]>(
       `${this.baseService.rootUrl}${this.predefinedGoalsUrl}`,
       { headers: this.headers }
     );
   }
 
-  createPredefinedHealthGoal(goal: PredefinedHealthGoal): Observable<PredefinedHealthGoal> {
-    return this.httpClient.post<PredefinedHealthGoal>(
+  createPredefinedHealthGoal(goal: PredefinedGoal): Observable<PredefinedGoal> {
+    return this.httpClient.post<PredefinedGoal>(
       `${this.baseService.rootUrl}${this.predefinedGoalsUrl}`,
       goal,
       { headers: this.headers }
     );
   }
 
-  updatePredefinedHealthGoal(goalId: number, goal: PredefinedHealthGoal): Observable<PredefinedHealthGoal> {
-    return this.httpClient.put<PredefinedHealthGoal>(
+  updatePredefinedHealthGoal(goalId: number, goal: PredefinedGoal): Observable<PredefinedGoal> {
+    return this.httpClient.put<PredefinedGoal>(
       `${this.baseService.rootUrl}${this.predefinedGoalsUrl}/${goalId}`,
       goal,
       { headers: this.headers }

@@ -1,16 +1,71 @@
 .goal-item {
   border: 1px solid #ccc; /* Adds a border around each goal item */
-  border-radius: 8px;     /* Slightly rounded corners */
-  padding: 16px;          /* Space inside each block */
+  border-radius: 10px;     /* Slightly rounded corners */
   margin-bottom: 16px;    /* Space between blocks */
   background-color: #f9f9f9; /* Light background for distinction */
 }
 
-.line-spacing {
-  display: block;        /* Ensures each span takes a full line */
-  margin-top: 12px;      /* Adds space above each line */
-  margin-bottom: 12px;   /* Adds space below each line */
+.mat-expansion-panel {
+  margin-bottom: 16px; /* Space between panels */
+  border: 1px solid #ccc; /* Border around the panel */
+  border-radius: 8px; /* Rounded corners for a modern look */
+  background-color: #fdfdfd; /* Slightly lighter background for panels */
+  overflow: hidden; /* Prevents content overflow */
+
+  .mat-expansion-panel-header {
+    font-weight: 600; /* Bold titles for clarity */
+    font-size: 18px; /* Larger font for prominence */
+    padding: 16px; /* Adds space inside the header */
+    background-color: #f9f9f9; /* Slight contrast for the header */
+    border-bottom: 1px solid #ddd; /* Separator between header and content */
+    cursor: pointer; /* Indicates clickable header */
+    transition: background-color 0.3s; /* Smooth hover effect */
+
+
+    .mat-panel-title {
+      color: #333; /* Title color */
+    }
+
+    .mat-panel-description {
+      color: #666; /* Subtitle/description color */
+      font-size: 14px; /* Smaller font for description */
+    }
+
+  }
+
+  .mat-expansion-panel-content {
+    padding: 16px; /* Adds space inside the content area */
+
+    p {
+      margin: 8px 0; /* Space between paragraphs */
+      font-size: 14px; /* Consistent font size */
+      color: #444; /* Text color */
+    }
+
+    button {
+      margin-top: 16px; /* Space above the button */
+    }
+  }
 }
 
+.goal-details {
+  .mat-body-1 {
+    display: block; /* Each item takes its own line */
+    margin: 8px 0; /* Space between details */
+    font-size: 14px; /* Consistent size for details */
+    color: #555; /* Neutral text color */
+  }
 
-
+  button {
+    background-color: #1976d2; /* Primary button color */
+    color: #fff; /* White text */
+    &:hover {
+      background-color: #1565c0; /* Darker blue on hover */
+    }
+  }
+  .goal-actions.button-group {
+    display: flex; // Align buttons horizontally
+    gap: 10px; // Space between buttons
+    margin-top: 16px; // Space above the button group
+  }
+}

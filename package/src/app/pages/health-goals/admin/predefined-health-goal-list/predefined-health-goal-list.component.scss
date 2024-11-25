@@ -1,12 +1,25 @@
 .goal-title {
-  margin-bottom: 20px; /* Space between title and description */
+  margin-bottom: 30px; /* Space between title and description */
 }
 
 .goal-description {
-  margin-bottom: 10px; /* Space between description and buttons */
+  margin-bottom: 20px; /* Space between description and buttons */
 }
 
-.actions {
+.goal-item {
+  border: 1px solid #ccc; /* Adds a border around each goal item */
+  border-radius: 8px;     /* Slightly rounded corners */
+  padding-left: 30px;
+  padding-top: 20px;
+  margin-bottom: 16px;    /* Space between blocks */
+  background-color: #f9f9f9; /* Light background for distinction */
+  width: 300%; /* Adjusts the width (you can increase or decrease as needed) */
+  max-width: 1000px; /* Sets a maximum width for responsiveness */
+  margin-left: auto; /* Centers the item horizontally */
+  margin-right: auto; /* Centers the item horizontally */
+}
+
+.goal-actions {
   margin-top: 10px;
   margin-bottom: 20px; /* Space between description and actions */
   display: flex; /* Ensures buttons are displayed in a row */
@@ -16,7 +29,7 @@
 }
 
 .add-button {
-  margin-top: 30px; /* Space between the last goal and the 'Add New Goal' button */
+  margin-top: 5px; /* Space between the last goal and the 'Add New Goal' button */
   margin-left: 40px;
 }
 

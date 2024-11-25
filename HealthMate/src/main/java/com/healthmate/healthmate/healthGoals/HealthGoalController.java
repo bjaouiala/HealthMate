@@ -56,8 +56,8 @@ public class HealthGoalController {
         return healthGoalService.updateHealthGoal(connctedUser, goalId, dto);
     }
 
-    @DeleteMapping("/{userId}/{goalId}")
-    public void deleteHealthGoal(@PathVariable Long userId, @PathVariable Long goalId) {
-        healthGoalService.deleteHealthGoal(userId, goalId);
+    @DeleteMapping("/{goalId}")
+    public void deleteHealthGoal(Authentication connctedUser, @PathVariable Long goalId) {
+        healthGoalService.deleteHealthGoal(connctedUser, goalId);
     }
 }

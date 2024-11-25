@@ -1,18 +1,19 @@
-export interface HealthGoal {
+export interface PredefinedGoal {
   id: number;
   title: string;
   description: string;
-  actualValue?: number;
-  targetValue?: number;
-  startDate?: string;
-  endDate?: string;
-  userDescription?: string;
-  status?: string;
 }
 
-export interface PredefinedHealthGoal {
+
+export interface HealthGoal {
   id: number;
-  title: string;
-  description: string;
+  goalTitle : string;
+  goalDescription : string;
+  actualValue: number;
+  targetValue: number;
+  startDate: string;
+  endDate: string;
+  userDescription: string;
+  status: string;
 }
 

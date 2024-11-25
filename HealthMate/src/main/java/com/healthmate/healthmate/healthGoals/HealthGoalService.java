@@ -127,8 +127,11 @@ public class HealthGoalService {
         return healthGoalMapper.toResponseDTO(updatedGoal);
     }
 
-    public void deleteHealthGoal(Long userId, Long goalId) {
-        HealthGoal goal = healthGoalRepository.findByIdAndUserId(goalId, userId)
+    public void deleteHealthGoal(Authentication connectedUser, Long goalId) {
+        User currentUser = (User) connectedUser.getPrincipal();
+        User user = userRepository.findById(currentUser.getId())
+                .orElseThrow(() -> new EntityNotFoundException("User not found with ID " + currentUser.getId()));
+        HealthGoal goal = healthGoalRepository.findByIdAndUserId(goalId, user.getId())
                 .orElseThrow(() -> new EntityNotFoundException("Health goal not found for the given user and goal ID."));
         healthGoalRepository.delete(goal);
     }

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HealthGoalService } from '../../../../services/HealthGoals-service/health-goals-service.service';
-import { PredefinedHealthGoal } from '../../../../models/health-goal.model';
+import { PredefinedGoal } from '../../../../models/health-goal.model';
 import { Router } from '@angular/router';
 import {NgForOf, NgIf} from "@angular/common";
 import {MatCard, MatCardContent, MatCardHeader, MatCardTitle} from "@angular/material/card";
@@ -27,7 +27,7 @@ import {MatTooltip} from "@angular/material/tooltip";
   styleUrls: ['./user-predefined-health-goal-list.component.scss']
 })
 export class UserPredefinedHealthGoalListComponent implements OnInit {
-  predefinedHealthGoals: PredefinedHealthGoal[] = [];
+  predefinedHealthGoals: PredefinedGoal[] = [];
   isLoading: boolean = false;
   errorMessage: string | null = null;
 

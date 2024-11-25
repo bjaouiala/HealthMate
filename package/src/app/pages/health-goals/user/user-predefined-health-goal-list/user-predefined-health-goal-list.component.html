@@ -4,22 +4,15 @@
     </mat-card-header>
     <mat-card-content class="b-t-1">
         <div class="row">
-            <!-- Loading Indicator -->
             <div *ngIf="isLoading" class="loading">Loading health goals...</div>
-
-            <!-- Error Message -->
             <div *ngIf="errorMessage" class="error">{{ errorMessage }}</div>
 
-            <!-- List of Health Goals -->
-            <ul *ngIf="predefinedHealthGoals.length > 0">
+            <ul *ngIf="predefinedHealthGoals.length > 0" class="goal-list">
                 <li *ngFor="let goal of predefinedHealthGoals" class="goal-item">
                     <div class="goal-details">
-                        <!-- Goal Title -->
                         <span matListItemTitle class="f-s-16 f-w-600">{{ goal.title }}</span>
-                        <!-- Goal Description -->
                         <span matListItemLine class="mat-body-1">{{ goal.description }}</span>
                     </div>
-                    <!-- Pick This Goal Button -->
                     <div class="actions">
                         <button
                                 mat-flat-button
@@ -32,14 +25,12 @@
                 </li>
             </ul>
 
-            <!-- No Health Goals Found -->
             <p *ngIf="!isLoading && predefinedHealthGoals.length === 0">No predefined health goals available.</p>
 
-            <!-- New Button for Redirect -->
 
         </div>
-        <div style="margin-top: 20px;">
-            <button mat-raised-button color="accent" (click)="goToHealthGoalsList()">
+        <div style="margin-top: 20px; margin-left: 25px">
+            <button mat-raised-button color="primary" (click)="goToHealthGoalsList()">
                 Go to Health Goals List
             </button>
         </div>
