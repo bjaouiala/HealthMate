@@ -1,54 +1,43 @@
-<div class="form-container">
-  <h2>{{ isEditMode ? 'Edit Medical Center' : 'Add Medical Center' }}</h2>
+<mat-card class="cardWithShadow theme-card">
+  <mat-card-header>
+    <mat-card-title class="m-b-0">{{ isEditMode ? 'Edit Medical Center' : 'Add Medical Center' }}</mat-card-title>
+  </mat-card-header>
+  <mat-card-content class="b-t-1">
+    <form (ngSubmit)="saveCenter()" #centerForm="ngForm" class="medical-center-form">
+      <div class="row">
 
-  <form (ngSubmit)="saveCenter()" #centerForm="ngForm" class="medical-center-form">
-    <!-- Name Field -->
-    <div class="form-group">
-      <label for="name">Name</label>
-      <input
-        type="text"
-        id="name"
-        name="name"
-        [(ngModel)]="center.name"
-        class="form-control"
-        required
-        placeholder="Enter medical center name"
-      />
-    </div>
+        <!-- Name Field -->
+        <div class="col-12">
+          <mat-label class="f-w-600 m-b-8 d-block">Name</mat-label>
+          <mat-form-field appearance="outline" class="w-100">
+            <input matInput type="text" id="name" name="name" [(ngModel)]="center.name" required placeholder="Enter medical center name" />
+          </mat-form-field>
+        </div>
 
-    <!-- Latitude Field -->
-    <div class="form-group">
-      <label for="latitude">Latitude</label>
-      <input
-        type="number"
-        id="latitude"
-        name="latitude"
-        [(ngModel)]="center.lat"
-        class="form-control"
-        required
-        placeholder="Enter latitude"
-      />
-    </div>
+        <!-- Latitude Field -->
+        <div class="col-lg-6">
+          <mat-label class="f-w-600 m-b-8 d-block">Latitude</mat-label>
+          <mat-form-field appearance="outline" class="w-100">
+            <input matInput type="number" id="latitude" name="latitude" [(ngModel)]="center.lat" required placeholder="Enter latitude" />
+          </mat-form-field>
+        </div>
 
-    <!-- Longitude Field -->
-    <div class="form-group">
-      <label for="longitude">Longitude</label>
-      <input
-        type="number"
-        id="longitude"
-        name="longitude"
-        [(ngModel)]="center.lng"
-        class="form-control"
-        required
-        placeholder="Enter longitude"
-      />
-    </div>
+        <!-- Longitude Field -->
+        <div class="col-lg-6">
+          <mat-label class="f-w-600 m-b-8 d-block">Longitude</mat-label>
+          <mat-form-field appearance="outline" class="w-100">
+            <input matInput type="number" id="longitude" name="longitude" [(ngModel)]="center.lng" required placeholder="Enter longitude" />
+          </mat-form-field>
+        </div>
+      </div>
 
-    <div class="form-actions">
-      <button type="submit" class="btn btn-primary" [disabled]="centerForm.invalid">
-        {{ isEditMode ? 'Update' : 'Add' }} Medical Center
-      </button>
-    </div>
-  </form>
-</div>
-
+      <!-- Submit Button -->
+      <div class="m-t-12 actions">
+        <button mat-flat-button color="primary" [disabled]="centerForm.invalid">
+          {{ isEditMode ? 'Update' : 'Add' }} Medical Center
+        </button>
+        <button mat-stroked-button color="warn" type="button" (click)="router.navigate(['/medical-centers'])">Cancel</button>
+      </div>
+    </form>
+  </mat-card-content>
+</mat-card>

@@ -1,6 +1,7 @@
 import { Routes } from '@angular/router';
 import { BlankComponent } from './layouts/blank/blank.component';
 import { FullComponent } from './layouts/full/full.component';
+import {MedicalCenterRoutes} from "./pages/mapLeaflet/medical-center.routes";
 
 export const routes: Routes = [
   {
@@ -40,7 +41,11 @@ export const routes: Routes = [
         loadChildren: () =>
           import('./pages/health-goals/health-goals.routes').then((m) => m.HealthGoalsRoutes),
       },
-
+      {
+        path: 'medicalCenter',
+        loadChildren: () =>
+          import('./pages/mapLeaflet/medical-center.routes').then((m) => m.MedicalCenterRoutes),
+      },
 
 
       {

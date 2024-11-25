@@ -1,14 +1,24 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import { MedicalCenterService, MedicalCenter } from '../../../services/medical-center-service/medical-center.service';
 import {FormsModule} from "@angular/forms";
+import {MatCard, MatCardContent, MatCardHeader, MatCardModule} from "@angular/material/card";
+import {MatFormField, MatLabel} from "@angular/material/form-field";
+import {MatInput} from "@angular/material/input";
 
 @Component({
   selector: 'app-medical-center-form',
   templateUrl: './medical-center-form-component.component.html',
   standalone: true,
   imports: [
-    FormsModule
+    FormsModule,
+    MatCard,
+    MatCardHeader,
+    MatCardContent,
+    MatLabel,
+    MatFormField,
+    MatInput,
+    MatCardModule
   ],
   styleUrls: ['./medical-center-form-component.component.scss']
 })
@@ -18,7 +28,9 @@ export class MedicalCenterFormComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private medicalCenterService: MedicalCenterService
+    private medicalCenterService: MedicalCenterService,
+    protected router: Router
+
   ) {}
 
   ngOnInit(): void {
