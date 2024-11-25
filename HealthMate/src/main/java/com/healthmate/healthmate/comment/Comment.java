@@ -1,5 +1,6 @@
-package com.healthmate.healthmate.post;
+package com.healthmate.healthmate.comment;
 
+import com.healthmate.healthmate.post.Post;
 import com.healthmate.healthmate.user.User;
 import jakarta.persistence.*;
 import lombok.*;
