@@ -1,5 +1,6 @@
 package com.healthmate.healthmate.user;
 
+import com.healthmate.healthmate.Event.Event;
 import com.healthmate.healthmate.HealthIndice.HealthIndice;
 import jakarta.persistence.*;
 import lombok.*;
@@ -11,10 +12,7 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.security.Principal;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 @Entity
 @Getter
@@ -51,6 +49,8 @@ public class User implements UserDetails,Principal {
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<HealthIndice> healthIndices;
 
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private Set<Event> events;
 
 
     @Override
