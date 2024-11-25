@@ -1,0 +1,22 @@
+.goal-item {
+  border: 1px solid #ccc; /* Adds a border around each goal item */
+  border-radius: 8px;     /* Slightly rounded corners */
+  padding-left: 30px;
+  padding-top: 20px;
+  margin-bottom: 16px;    /* Space between blocks */
+  background-color: #f9f9f9; /* Light background for distinction */
+  width: 300%; /* Adjusts the width (you can increase or decrease as needed) */
+  max-width: 1000px; /* Sets a maximum width for responsiveness */
+  margin-left: auto; /* Centers the item horizontally */
+  margin-right: auto; /* Centers the item horizontally */
+}
+
+
+.actions {
+  margin-top: 10px;
+  margin-bottom: 20px; /* Space between description and actions */
+  display: flex; /* Ensures buttons are displayed in a row */
+  gap: 16px; /* Adjust space between buttons */
+  justify-content: flex-start; /* Aligns buttons to the left */
+  margin-left: -8px; /* Moves the button slightly to the left */
+}

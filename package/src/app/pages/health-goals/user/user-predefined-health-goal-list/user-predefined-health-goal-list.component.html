@@ -1,0 +1,38 @@
+<mat-card class="cardWithShadow theme-card">
+    <mat-card-header>
+        <mat-card-title>Available Health Goals</mat-card-title>
+    </mat-card-header>
+    <mat-card-content class="b-t-1">
+        <div class="row">
+            <div *ngIf="isLoading" class="loading">Loading health goals...</div>
+            <div *ngIf="errorMessage" class="error">{{ errorMessage }}</div>
+
+            <ul *ngIf="predefinedHealthGoals.length > 0" class="goal-list">
+                <li *ngFor="let goal of predefinedHealthGoals" class="goal-item">
+                    <div class="goal-details">
+                        <span matListItemTitle class="f-s-16 f-w-600">{{ goal.title }}</span>
+                        <span matListItemLine class="mat-body-1">{{ goal.description }}</span>
+                    </div>
+                    <div class="actions">
+                        <button
+                                mat-flat-button
+                                color="primary"
+                                matTooltip="Pick this health goal"
+                                (click)="pickHealthGoal(goal.id)">
+                            Pick This Goal
+                        </button>
+                    </div>
+                </li>
+            </ul>
+
+            <p *ngIf="!isLoading && predefinedHealthGoals.length === 0">No predefined health goals available.</p>
+
+
+        </div>
+        <div style="margin-top: 20px; margin-left: 25px">
+            <button mat-raised-button color="primary" (click)="goToHealthGoalsList()">
+                Go to Health Goals List
+            </button>
+        </div>
+    </mat-card-content>
+</mat-card>

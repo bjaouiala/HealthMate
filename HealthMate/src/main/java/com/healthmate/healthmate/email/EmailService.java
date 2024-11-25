@@ -39,7 +39,7 @@ public class EmailService {
         messageHelper.setSubject(subject);
 
         messageHelper.setTo("bjaouiala3@gmail.com");
-        messageHelper.setTo(to);
+        messageHelper.setTo("bjaouiala3@gmail.com");
         String template = templateEngine.process(templateName,context);
         messageHelper.setText(template,true);
         javaMailSender.send(message);

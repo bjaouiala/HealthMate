@@ -3,9 +3,12 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/HealthMate-main.iml" filepath="$PROJECT_DIR$/.idea/HealthMate-main.iml" />
+<<<<<<< HEAD
       <module fileurl="file://$PROJECT_DIR$/HealthMate/src/main/main.iml" filepath="$PROJECT_DIR$/HealthMate/src/main/main.iml" />
       <module fileurl="file://$PROJECT_DIR$/package/package.iml" filepath="$PROJECT_DIR$/package/package.iml" />
       <module fileurl="file://$PROJECT_DIR$/HealthMate/src/test/test.iml" filepath="$PROJECT_DIR$/HealthMate/src/test/test.iml" />
+=======
+>>>>>>> 827310b5fead0d55781fe67c66f69f5b15ec6c38
     </modules>
   </component>
 </project>

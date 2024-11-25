@@ -1,0 +1,56 @@
+<mat-card class="cardWithShadow theme-card">
+  <mat-card-header>
+    <mat-card-title>Health Goals</mat-card-title>
+  </mat-card-header>
+  <mat-card-content class="b-t-1">
+    <div class="row">
+      <!-- Loading and Error Messages -->
+      <div *ngIf="isLoading" class="loading">Loading goals...</div>
+      <div *ngIf="errorMessage" class="error">{{ errorMessage }}</div>
+
+      <ul *ngIf="!isLoading && predefinedHealthGoals.length > 0" class="goal-list">
+        <li *ngFor="let goal of predefinedHealthGoals" class="goal-item">
+          <div class="goal-details">
+            <span class="f-s-20 f-w-600 goal-title">{{ goal.title }}</span><br>
+            <span class="f-s-20 f-w-300 goal-description">{{ goal.description }}</span>
+          </div>
+          <div class="goal-actions">
+            <button
+              mat-flat-button
+              color="primary"
+              matTooltip="Edit this goal"
+              [routerLink]="['/healthGoals/admin/predefined-health-goals/edit', goal.id]"
+            >
+              Edit
+            </button>
+            <button
+              mat-flat-button
+              color="warn"
+              matTooltip="Delete this goal"
+              (click)="deletePredefinedHealthGoal(goal.id)"
+            >
+              Delete
+            </button>
+          </div>
+        </li>
+      </ul>
+
+      <!-- No Goals Found -->
+      <p *ngIf="!isLoading && predefinedHealthGoals.length === 0" class="no-goals-message">
+        No predefined health goals found.
+      </p>
+    </div>
+
+    <!-- Add New Goal Button -->
+    <div class="m-t-12 actions">
+      <button
+        mat-raised-button
+        color="primary"
+        routerLink="/healthGoals/admin/predefined-health-goals/create"
+        class="add-button"
+      >
+        Add New Goal
+      </button>
+    </div>
+  </mat-card-content>
+</mat-card>
