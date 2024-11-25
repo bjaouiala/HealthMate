@@ -5,11 +5,15 @@ import { MatTableModule } from '@angular/material/table';
 import { Chart, registerables } from 'chart.js';
 import { StatsService } from 'src/app/services/stats.service';
 import { provideCharts, withDefaultRegisterables } from 'ng2-charts';
+import html2canvas from 'html2canvas';
+import jsPDF from 'jspdf';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-health-stats-chart',
   standalone: true,
-  imports: [MatIconModule, MatTableModule, MatCardModule],
+  imports: [FormsModule,CommonModule  ,MatIconModule, MatTableModule, MatCardModule],
   providers: [provideCharts(withDefaultRegisterables())],
   templateUrl: './health-stats-chart.component.html',
   styleUrls: ['./health-stats-chart.component.scss']
@@ -18,6 +22,14 @@ export class HealthStatsChartComponent implements OnInit {
   
   private combinedChart: Chart | undefined;
   private individualCharts: Chart[] = []; // Array to hold individual chart instances
+
+  // Selection flags for indicators
+  includeAge = false;
+  includeSystolicBP = false;
+  includeDiastolicBP = false;
+  includeBloodSugar = false;
+  includeBodyTemp = false;
+  includeHeartRate = false;
 
   constructor(private statsService: StatsService) {
     // Register all chart types
@@ -128,5 +140,58 @@ export class HealthStatsChartComponent implements OnInit {
     });
 
     this.individualCharts.push(chart); // Store the chart instance
+  }
+
+  generateReport(): void {
+    const pdf = new jsPDF();
+
+    // Capture selected charts and add them to the PDF
+    const promises = [];
+
+    // Capture combined chart if included
+    promises.push(this.captureChart('myCombinedChart'));
+
+    if (this.includeAge) {
+      promises.push(this.captureChart('myChartAge'));
+    }
+    if (this.includeSystolicBP) {
+      promises.push(this.captureChart('myChartSystolicBP'));
+    }
+    if (this.includeDiastolicBP) {
+      promises.push(this.captureChart('myChartDiastolicBP'));
+    }
+    if (this.includeBloodSugar) {
+      promises.push(this.captureChart('myChartBloodSugar'));
+    }
+    if (this.includeBodyTemp) {
+      promises.push(this.captureChart('myChartBodyTemp'));
+    }
+    if (this.includeHeartRate) {
+      promises.push(this.captureChart('myChartHeartRate'));
+    }
+
+    Promise.all(promises).then(images => {
+      images.forEach((imgData, index) => {
+        if (index > 0) { // Add page break after the first image
+          pdf.addPage();
+        }
+        pdf.addImage(imgData, 'PNG', 10, 10, 180, 160); // Adjust dimensions as needed
+      });
+
+      pdf.save('health_report.pdf'); // Save the PDF with a filename
+    });
+  }
+
+  private captureChart(chartId: string): Promise<any> {
+    const chartElement = document.getElementById(chartId) as HTMLCanvasElement | null; // Assert as HTMLCanvasElement or null
+
+    if (!chartElement) {
+      console.error(`Canvas element with id ${chartId} not found.`);
+      return Promise.reject(`Canvas element with id ${chartId} not found.`);
+    }
+
+    return html2canvas(chartElement).then(canvas => {
+      return canvas.toDataURL('image/png');
+    });
   }
 }

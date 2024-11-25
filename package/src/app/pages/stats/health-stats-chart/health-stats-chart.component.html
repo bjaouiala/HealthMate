@@ -1,37 +1,81 @@
 <mat-card class="cardWithShadow">
-        <mat-card-header>
-          <mat-card-title>Health Statistics</mat-card-title>
-          <mat-card-subtitle>Average Health Indices</mat-card-subtitle>
-        </mat-card-header>
+  <mat-card-header>
+    <mat-card-title>Health Statistics</mat-card-title>
+    <mat-card-subtitle>Select Indicators for Report</mat-card-subtitle>
+  </mat-card-header>
+
+  <mat-card-content>
+    <!-- Health Indicator Selection -->
+    <div>
+      <h3>Select Health Indicators to Include in Report</h3>
+      <div>
+        <label>
+          <input type="checkbox" [(ngModel)]="includeAge" /> Age
+        </label>
+        <label>
+          <input type="checkbox" [(ngModel)]="includeSystolicBP" /> Systolic BP
+        </label>
+        <label>
+          <input type="checkbox" [(ngModel)]="includeDiastolicBP" /> Diastolic BP
+        </label>
+        <label>
+          <input type="checkbox" [(ngModel)]="includeBloodSugar" /> Blood Sugar
+        </label>
+        <label>
+          <input type="checkbox" [(ngModel)]="includeBodyTemp" /> Body Temperature
+        </label>
+        <label>
+          <input type="checkbox" [(ngModel)]="includeHeartRate" /> Heart Rate
+        </label>
+      </div>
+
+      <!-- Generate Report Button -->
+      <button mat-raised-button color="primary" (click)="generateReport()">Generate Report</button>
+
+     
+
       
-        <mat-card-content>
-          <!-- Combined Average Health Indices Chart -->
-          <div style="display:block;">
-            <canvas id="myCombinedChart" style="width:auto; height:auto;"></canvas>
-          </div>
-      
-          <h3>Individual Health Attributes</h3>
-      
-          <!-- Individual Health Attribute Charts arranged in a grid -->
-          <div style="display:flex; flex-wrap: wrap; gap: 20px;">
-            <div style="flex-basis: calc(50% - 10px);">
-              <canvas id="myChartAge" style="width:auto; height:auto;"></canvas>
-            </div>
-            <div style="flex-basis: calc(50% - 10px);">
-              <canvas id="myChartSystolicBP" style="width:auto; height:auto;"></canvas>
-            </div>
-            <div style="flex-basis: calc(50% - 10px);">
-              <canvas id="myChartDiastolicBP" style="width:auto; height:auto;"></canvas>
-            </div>
-            <div style="flex-basis: calc(50% - 10px);">
-              <canvas id="myChartBloodSugar" style="width:auto; height:auto;"></canvas>
-            </div>
-            <div style="flex-basis: calc(50% - 10px);">
-              <canvas id="myChartBodyTemp" style="width:auto; height:auto;"></canvas>
-            </div>
-            <div style="flex-basis: calc(50% - 10px);">
-              <canvas id="myChartHeartRate" style="width:auto; height:auto;"></canvas>
-            </div>
-          </div>
-        </mat-card-content>
-      </mat-card>
+    </div>
+
+    <!-- Combined Average Health Indices Chart -->
+    <div style="display:block;">
+      <canvas id="myCombinedChart" style="width:auto; height:auto;"></canvas>
+    </div>
+
+    <!-- Individual Health Attribute Charts arranged in a grid -->
+    <h3>Individual Health Attributes</h3>
+    <div style="display:flex; flex-wrap: wrap; gap: 20px;">
+      <div style="flex-basis: calc(50% - 10px);">
+        <canvas id="myChartAge" style="width:auto; height:auto;"></canvas>
+      </div>
+      <div style="flex-basis: calc(50% - 10px);">
+        <canvas id="myChartSystolicBP" style="width:auto; height:auto;"></canvas>
+      </div>
+      <div style="flex-basis: calc(50% - 10px);">
+        <canvas id="myChartDiastolicBP" style="width:auto; height:auto;"></canvas>
+      </div>
+      <div style="flex-basis: calc(50% - 10px);">
+        <canvas id="myChartBloodSugar" style="width:auto; height:auto;"></canvas>
+      </div>
+      <div style="flex-basis: calc(50% - 10px);">
+        <canvas id="myChartBodyTemp" style="width:auto; height:auto;"></canvas>
+      </div>
+      <div style="flex-basis: calc(50% - 10px);">
+        <canvas id="myChartHeartRate" style="width:auto; height:auto;"></canvas>
+      </div>
+    </div>
+  </mat-card-content>
+</mat-card>
+
+<!-- Add styles for loading and error messages -->
+<style>
+.loading-message {
+  color: blue;
+  font-weight: bold;
+}
+
+.error-message {
+  color: red;
+  font-weight: bold;
+}
+</style>

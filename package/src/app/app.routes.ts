@@ -46,6 +46,11 @@ export const routes: Routes = [
         loadChildren: () =>
           import('./pages/chat/chat.routes').then((m) => m.ChatRoutes),
       },
+      {
+        path: 'events',
+        loadChildren: () =>
+          import('./pages/events/events.routes').then((m) => m.EvenstRoutes),
+      },
     ],
   },
   {

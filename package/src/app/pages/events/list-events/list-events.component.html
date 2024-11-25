@@ -1,0 +1,65 @@
+<mat-card class="cardWithShadow" style="width: 100%;">
+    <mat-card-content>
+      <mat-card-title>Event List</mat-card-title>
+  
+      <div class="table-responsive">
+        <table mat-table [dataSource]="events" class="mat-elevation-z8">
+  
+         
+  
+          <!-- Title Column -->
+          <ng-container matColumnDef="title">
+            <th mat-header-cell *matHeaderCellDef>Title</th>
+            <td mat-cell *matCellDef="let element">{{ element.title }}</td>
+          </ng-container>
+  
+          <!-- Organizer Column -->
+          <ng-container matColumnDef="organizer">
+            <th mat-header-cell *matHeaderCellDef>Organizer</th>
+            <td mat-cell *matCellDef="let element">{{ element.organizer }}</td>
+          </ng-container>
+  
+          <!-- Date Column -->
+          <ng-container matColumnDef="eventDate">
+            <th mat-header-cell *matHeaderCellDef>Date</th>
+            <td mat-cell *matCellDef="let element">{{ element.eventDate | date:'short' }}</td>
+          </ng-container>
+  
+          <!-- Location Column -->
+          <ng-container matColumnDef="location">
+            <th mat-header-cell *matHeaderCellDef>Location</th>
+            <td mat-cell *matCellDef="let element">{{ element.location }}</td>
+          </ng-container>
+  
+          <!-- Status Column -->
+          <ng-container matColumnDef="status">
+            <th mat-header-cell *matHeaderCellDef>Status</th>
+            <td mat-cell *matCellDef="let element">{{ element.status }}</td>
+          </ng-container>
+  
+          <!-- Actions Column -->
+          <ng-container matColumnDef="actions">
+            <th mat-header-cell *matHeaderCellDef>Actions</th>
+            <td mat-cell *matCellDef="let element">
+              <button mat-icon-button (click)="editEvent(element.id)">
+                <mat-icon color="primary">edit</mat-icon>
+              </button>
+              <button mat-icon-button (click)="deleteEvent(element.id)">
+                <mat-icon color="warn">delete</mat-icon>
+              </button>
+              <button mat-icon-button (click)="viewEventDetails(element.id)">
+                <mat-icon color="accent">info</mat-icon> 
+              </button>
+            </td>
+          </ng-container>
+  
+          <!-- Header Row -->
+          <tr mat-header-row *matHeaderRowDef="[ 'title', 'organizer', 'eventDate', 'location', 'status','actions']"></tr>
+  
+          <!-- Data Rows -->
+          <tr mat-row *matRowDef="let row; columns: [ 'title', 'organizer', 'eventDate', 'location', 'status','actions']"></tr>
+  
+        </table>
+      </div>
+    </mat-card-content>
+  </mat-card>
