@@ -10,11 +10,12 @@ import { MaterialModule } from 'src/app/material.module';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { NgScrollbarModule } from 'ngx-scrollbar';
+import {NotificationComponent} from "../../../notification/notification.component";
 
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [RouterModule, CommonModule, NgScrollbarModule, TablerIconsModule, MaterialModule],
+  imports: [RouterModule, CommonModule, NgScrollbarModule, TablerIconsModule, MaterialModule,NotificationComponent],
   templateUrl: './header.component.html',
   encapsulation: ViewEncapsulation.None,
 })

@@ -1,0 +1,28 @@
+<mat-card class="cardWithShadow theme-card">
+<table>
+    <tr>
+      <th>
+        <mat-card-title class="m-b-0">
+          Message
+        </mat-card-title>
+      </th>
+      <th>
+        <mat-card-title class="m-b-0">
+          Sent Time
+        </mat-card-title>
+      </th>
+    </tr>
+    <tr *ngFor="let notification of notifications" align="center">
+      <mat-card class="b-1 shadow-none">
+        <mat-card-content>
+      <td>
+        {{ notification.message }}
+      </td>
+        </mat-card-content>
+      </mat-card>
+      <td>
+        {{ notification.sentTime | date: 'dd/MM/yyyy, HH:mm'  }}
+      </td>
+    </tr>
+  </table>
+</mat-card>

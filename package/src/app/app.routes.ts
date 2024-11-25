@@ -18,6 +18,16 @@ export const routes: Routes = [
           import('./pages/pages.routes').then((m) => m.PagesRoutes),
       },
       {
+       path: 'notificationList',
+        loadChildren: ()=>
+          import('./notificationlist/notificationlist.routes').then((m)=>m.NotificationlistRoutes)
+      },
+      {
+        path: 'uploadImages',
+        loadChildren: ()=>
+          import('./upload-image/uploadImage.routes').then((m)=>m.UploadImageRoutes)
+      },
+      {
         path: 'ui-components',
         loadChildren: () =>
           import('./pages/ui-components/ui-components.routes').then(
