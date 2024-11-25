@@ -24,6 +24,16 @@ export const routes: Routes = [
 
       },
       {
+       path: 'notificationList',
+        loadChildren: ()=>
+          import('./notificationlist/notificationlist.routes').then((m)=>m.NotificationlistRoutes)
+      },
+      {
+        path: 'uploadImages',
+        loadChildren: ()=>
+          import('./upload-image/uploadImage.routes').then((m)=>m.UploadImageRoutes)
+      },
+      {
         path: 'ui-components',
         loadChildren: () =>
           import('./pages/ui-components/ui-components.routes').then(

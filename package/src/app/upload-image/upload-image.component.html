@@ -1,0 +1,15 @@
+<div>
+    <div>
+      <img [src]="selectedPicture" alt="...">
+      <input type="file" (change)="onFileSelected($event)"
+             class="form-control"
+             type="file"
+             id="formFile"
+             accept="image/*">
+    </div>
+    <div>
+      <form>
+          <button type="submit" (click)="uploadImages()"> Save </button>
+      </form>
+    </div>
+</div>
