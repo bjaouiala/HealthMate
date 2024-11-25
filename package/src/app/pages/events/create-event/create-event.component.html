@@ -1,0 +1,60 @@
+<mat-card class="cardWithShadow" style="width: 100%;">
+    <mat-card-content>
+      <mat-card-title>Create New Event</mat-card-title>
+  
+      <form (ngSubmit)="createEvent()">
+        <div class="form-group">
+          <mat-form-field appearance="fill">
+            <mat-label>Title</mat-label>
+            <input matInput [(ngModel)]="event.title" name="title" required>
+          </mat-form-field>
+        </div>
+  
+        <div class="form-group">
+          <mat-form-field appearance="fill">
+            <mat-label>Description</mat-label>
+            <textarea matInput [(ngModel)]="event.description" name="description"></textarea>
+          </mat-form-field>
+        </div>
+  
+        <div class="form-group">
+          <mat-form-field appearance="fill">
+            <mat-label>Event Date</mat-label>
+            <input matInput [(ngModel)]="event.eventDate" name="eventDate" type="datetime-local" required>
+          </mat-form-field>
+        </div>
+  
+        <!-- Created Date will be automatically set in TypeScript code -->
+        <div class="form-group">
+          <mat-form-field appearance="fill">
+            <mat-label>Location</mat-label>
+            <input matInput [(ngModel)]="event.location" name="location" required>
+          </mat-form-field>
+        </div>
+  
+        <div class="form-group">
+          <mat-form-field appearance="fill">
+            <mat-label>Organizer</mat-label>
+            <input matInput [(ngModel)]="event.organizer" name="organizer" required>
+          </mat-form-field>
+        </div>
+  
+        <!-- Static Status Display -->
+        <div class="form-group">
+          <mat-form-field appearance="fill">
+            <mat-label>Status</mat-label>
+            <input matInput value="SCHEDULED" disabled required> <!-- Static input field -->
+          </mat-form-field>
+        </div>
+  
+        <div class="form-group">
+          <button mat-raised-button color="primary" type="submit">Create Event</button>
+        </div>
+  
+        <!-- Error Message Display -->
+        <div *ngIf="errorMessage" class="alert alert-danger mt-2">
+          {{ errorMessage }}
+        </div>
+      </form>
+    </mat-card-content>
+  </mat-card>

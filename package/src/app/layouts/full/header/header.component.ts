@@ -10,9 +10,7 @@ import { MaterialModule } from 'src/app/material.module';
 import {Router, RouterModule} from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { NgScrollbarModule } from 'ngx-scrollbar';
-
 import {TokenService} from "../../../services/auth-service/token.service";
-
 import {NotificationComponent} from "../../../notification/notification.component";
 
 

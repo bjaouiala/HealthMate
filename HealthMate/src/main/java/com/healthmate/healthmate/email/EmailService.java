@@ -8,9 +8,11 @@ import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 import org.thymeleaf.context.Context;
 import org.thymeleaf.spring6.SpringTemplateEngine;
 
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -46,4 +48,26 @@ public class EmailService {
 
     }
 
+    public void sendSimpleEmail(String to, String subject, String messageBody, MultipartFile attachment) throws MessagingException, IOException {
+        log.info("Sending simple email to: {}", to);
+
+        MimeMessage message = javaMailSender.createMimeMessage();
+        MimeMessageHelper messageHelper = new MimeMessageHelper(message, MULTIPART_MODE_MIXED, UTF_8.name());
+
+        messageHelper.setSubject(subject);
+        messageHelper.setTo(to);
+        messageHelper.setText(messageBody, true); // 'true' indicates that the text is HTML
+
+        // Attach the PDF file
+        if (attachment != null ) {
+            log.info("file was send");
+            messageHelper.addAttachment(attachment.getOriginalFilename(), attachment);
+            log.info("file was send success");
+        }else {
+            log.info("file empty");
+        }
+
+        javaMailSender.send(message);
+        log.info("Simple email sent to: {}", to);
+    }
 }

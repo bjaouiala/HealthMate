@@ -19,12 +19,12 @@ export const routes: Routes = [
         loadChildren: () =>
           import('./pages/pages.routes').then((m) => m.PagesRoutes),
       },{
-      path: "posts",
+        path: "posts",
         loadChildren: ()=> import("./pages/post-list/post-route").then((m)=>m.postRoute)
 
       },
       {
-       path: 'notificationList',
+        path: 'notificationList',
         loadChildren: ()=>
           import('./notificationlist/notificationlist.routes').then((m)=>m.NotificationlistRoutes)
       },
@@ -68,13 +68,22 @@ export const routes: Routes = [
           import('./pages/stats/stats.routes').then((m) => m.StasRouts),
       },
       {
+        path: 'map',
+        loadChildren: () =>
+          import('./pages/mapLeaflet/map.routes').then((m) => m.MapRoutes),
+      },      {
+        path: 'events',
+        loadChildren: () =>
+          import('./pages/events/events.routes').then((m) => m.EvenstRoutes),
+      },
+      {
         path: 'chat',
         loadChildren: () =>
           import('./pages/chat/chat.routes').then((m) => m.ChatRoutes),
       },{
-      path:"users",
+        path:"users",
         loadChildren: () =>
-        import('./pages/user-profile/UserRouter').then((m)=> m.UserRouter)
+          import('./pages/user-profile/UserRouter').then((m)=> m.UserRouter)
 
       }
     ],

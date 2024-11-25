@@ -1,0 +1,53 @@
+<mat-card class="cardWithShadow">
+    <mat-card-content>
+      <h2>Send Email</h2>
+  
+      <form (ngSubmit)="sendEmail()">
+        <div class="mb-3">
+          <mat-form-field appearance="fill" class="w-100">
+            <mat-label>To</mat-label>
+            <input
+              matInput
+              type="email"
+              [(ngModel)]="emailData.to"
+              name="to"
+              required
+              placeholder="Enter recipient's email"
+            />
+          </mat-form-field>
+        </div>
+        <div class="mb-3">
+          <mat-form-field appearance="fill" class="w-100">
+            <mat-label>Subject</mat-label>
+            <input
+              matInput
+              type="text"
+              [(ngModel)]="emailData.subject"
+              name="subject"
+              required
+              placeholder="Enter email subject"
+            />
+          </mat-form-field>
+        </div>
+        <div class="mb-3">
+          <mat-form-field appearance="fill" class="w-100">
+            <mat-label>Message Body</mat-label>
+            <textarea
+              matInput
+              [(ngModel)]="emailData.messageBody"
+              name="messageBody"
+              required
+              placeholder="Enter your message here"
+            ></textarea>
+          </mat-form-field>
+        </div>
+        <div class="mb-3">
+          <!-- Button to trigger file selection -->
+          <button mat-raised-button color="primary" (click)="fileInput.click(); $event.preventDefault()">Choose File</button>
+          <!-- Hidden file input -->
+          <input type="file" (change)="onFileChange($event)" #fileInput hidden />
+        </div>
+        <button mat-raised-button color="primary" type="submit">Send Email</button>
+      </form>
+    </mat-card-content>
+  </mat-card>
