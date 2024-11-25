@@ -1,0 +1,10 @@
+#map {
+  height: 500px; /* Set height to make the map visible */
+  width: 100%;   /* Responsive width */
+}
+#map {
+  height: 100vh; /* Remplit toute la hauteur de la fenêtre */
+  width: 100%;   /* S'assure que la largeur occupe tout l'espace disponible */
+  margin: 0;
+  padding: 0;
+}

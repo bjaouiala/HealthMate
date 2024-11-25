@@ -1,0 +1,54 @@
+<div class="form-container">
+  <h2>{{ isEditMode ? 'Edit Medical Center' : 'Add Medical Center' }}</h2>
+
+  <form (ngSubmit)="saveCenter()" #centerForm="ngForm" class="medical-center-form">
+    <!-- Name Field -->
+    <div class="form-group">
+      <label for="name">Name</label>
+      <input
+        type="text"
+        id="name"
+        name="name"
+        [(ngModel)]="center.name"
+        class="form-control"
+        required
+        placeholder="Enter medical center name"
+      />
+    </div>
+
+    <!-- Latitude Field -->
+    <div class="form-group">
+      <label for="latitude">Latitude</label>
+      <input
+        type="number"
+        id="latitude"
+        name="latitude"
+        [(ngModel)]="center.lat"
+        class="form-control"
+        required
+        placeholder="Enter latitude"
+      />
+    </div>
+
+    <!-- Longitude Field -->
+    <div class="form-group">
+      <label for="longitude">Longitude</label>
+      <input
+        type="number"
+        id="longitude"
+        name="longitude"
+        [(ngModel)]="center.lng"
+        class="form-control"
+        required
+        placeholder="Enter longitude"
+      />
+    </div>
+
+    <div class="form-actions">
+      <button type="submit" class="btn btn-primary" [disabled]="centerForm.invalid">
+        {{ isEditMode ? 'Update' : 'Add' }} Medical Center
+      </button>
+    </div>
+  </form>
+</div>
+
