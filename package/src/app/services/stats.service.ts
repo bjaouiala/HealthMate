@@ -7,9 +7,9 @@ import { Observable } from 'rxjs';
 })
 export class StatsService {
 
-  private apiUrl = 'http://localhost:8094/api/v1/health-indices/averages';
+  private apiUrl = 'http://localhost:8080/api/v1/health-indices/averages';
 
-  private emailUrl = 'http://localhost:8094/api/v1/health-indices';
+  private emailUrl = 'http://localhost:8080/api/v1/health-indices';
 
   constructor(private http: HttpClient) { }
 
@@ -17,10 +17,10 @@ export class StatsService {
     return this.http.get<{ [key: string]: number }>(this.apiUrl);
   }
 
-    private baseUrl = 'http://localhost:8094/api/v1/health-indices/single-stats';
+    private baseUrl = 'http://localhost:8080/api/v1/health-indices/single-stats';
 
-    getHealthStats(userId: number): Observable<any> {
-      return this.http.get(`${this.baseUrl}/${userId}`);
+    getHealthStats(): Observable<any> {
+      return this.http.get(`${this.baseUrl}`);
     }
 
     sendEmail(to: string, subject: string, messageBody: string, attachment?: File): Observable<any> {
@@ -28,12 +28,12 @@ export class StatsService {
       formData.append('to', to);
       formData.append('subject', subject);
       formData.append('messageBody', messageBody);
-      
+
       // Only append the attachment if it exists
     if (attachment) {
       formData.append('file', attachment); // Ensure this matches what your backend expects
     }
-  
+
       return this.http.post(this.emailUrl, formData);
     }
 

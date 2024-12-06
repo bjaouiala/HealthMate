@@ -23,17 +23,12 @@ export class MedicalCenterService {
     private tokenService: TokenService // Inject TokenService
   ) {}
 
-  private get headers(): HttpHeaders {
-    return new HttpHeaders({
-      Authorization: `Bearer ${this.tokenService.token}`, // Add token to headers
-    });
-  }
+
 
   // Get all medical centers
   getMedicalCenters(): Observable<MedicalCenter[]> {
     return this.httpClient.get<MedicalCenter[]>(
-      `${this.baseService.rootUrl}${this.medicalCentersUrl}`,
-      { headers: this.headers }
+      `${this.baseService.rootUrl}${this.medicalCentersUrl}`
     );
   }
 
@@ -41,8 +36,7 @@ export class MedicalCenterService {
   addMedicalCenter(center: MedicalCenter): Observable<MedicalCenter> {
     return this.httpClient.post<MedicalCenter>(
       `${this.baseService.rootUrl}${this.medicalCentersUrl}`,
-      center,
-      { headers: this.headers }
+      center
     );
   }
 
@@ -50,8 +44,8 @@ export class MedicalCenterService {
   updateMedicalCenter(centerId: number, center: MedicalCenter): Observable<MedicalCenter> {
     return this.httpClient.put<MedicalCenter>(
       `${this.baseService.rootUrl}${this.medicalCentersUrl}/${centerId}`,
-      center,
-      { headers: this.headers }
+      center
+
     );
   }
 
@@ -59,7 +53,7 @@ export class MedicalCenterService {
   deleteMedicalCenter(centerId: number): Observable<void> {
     return this.httpClient.delete<void>(
       `${this.baseService.rootUrl}${this.medicalCentersUrl}/${centerId}`,
-      { headers: this.headers }
+
     );
   }
 }

@@ -19,29 +19,30 @@ import {FormsModule} from "@angular/forms";
   providers: [UploadImageService]
 })
 export class UploadImageComponent implements OnInit{
-  selectedPicture: any;
-  picture : string;
+  selectedPicture: string | undefined;
+  postFile:any
 
   constructor(private uploadImage : UploadImageService) {
   }
   ngOnInit(): void {
   }
 
-  onFileSelected(event: any) {
-    this.selectedPicture=event.target.files[0]
-    if (this.selectedPicture){
+    onFileSelected(event: any) {
+    this.postFile = event.target.files[0]
+    console.log(this.postFile)
+    if (this.postFile){
       const reader = new FileReader()
-      reader.onload=()=>{
-        this.picture=reader.result as string
+      reader.onload = ()=>{
+        this.selectedPicture = reader.result as string
       }
-      reader.readAsDataURL(this.selectedPicture)
+      reader.readAsDataURL(this.postFile)
     }
-    else {console.error('No file selected!');
-    }
+
+
   }
 
   uploadImages() {
-    this.uploadImage.uplaoadImage(this.selectedPicture).subscribe(
+    this.uploadImage.uplaoadImage(this.postFile).subscribe(
       {
         next:res=>{
 

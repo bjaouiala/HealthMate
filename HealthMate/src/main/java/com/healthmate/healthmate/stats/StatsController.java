@@ -1,9 +1,11 @@
 package com.healthmate.healthmate.stats;
 
 import com.healthmate.healthmate.email.EmailService;
+import com.healthmate.healthmate.user.User;
 import jakarta.mail.MessagingException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -24,16 +26,17 @@ public class StatsController {
     private EmailService emailService ;
 
     @GetMapping("/averages")
-    public ResponseEntity<Map<String, Double>> getAverageStats() {
-        Long userId = 1L; // Default user ID
+    public ResponseEntity<Map<String, Double>> getAverageStats(Authentication connectedUser) {
+        User user = (User) connectedUser.getPrincipal();
 
-        Map<String, Double> averages = statsService.calculateAverages(userId);
+        Map<String, Double> averages = statsService.calculateAverages(user.getId());
         return ResponseEntity.ok(averages);
     }
 
-    @GetMapping("/single-stats/{userId}")
-    public ResponseEntity<StatisticsResult> getHealthData(@PathVariable Long userId) {
-        StatisticsResult result = stats.calculateStatsForUser(userId);
+    @GetMapping("/single-stats")
+    public ResponseEntity<StatisticsResult> getHealthData(Authentication connectedUser) {
+        User user = (User) connectedUser.getPrincipal();
+        StatisticsResult result = stats.calculateStatsForUser(user.getId());
 
         if (result == null) {
             return ResponseEntity.notFound().build();

@@ -2,6 +2,7 @@ package com.healthmate.healthmate.HealthIndice;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -22,19 +23,19 @@ public class HealthIndiceController {
     @PostMapping
     public ResponseEntity<HealthIndice> createHealthIndice(
             @RequestBody HealthIndice healthIndice,
-            @RequestParam Long userId) {
+            Authentication connectedUser) {
 
         // Call the service to create the health index
-        HealthIndice createdHealthIndice = healthIndiceService.createHealthIndice(healthIndice, userId);
+        HealthIndice createdHealthIndice = healthIndiceService.createHealthIndice(healthIndice, connectedUser);
 
         // Return response with created status and the created health index
         return ResponseEntity.status(HttpStatus.CREATED).body(createdHealthIndice);
     }
 
     // Get all health indices for a specific user
-    @GetMapping("/user/{userId}")
-    public ResponseEntity<List<HealthIndice>> getAllHealthIndices(@PathVariable Long userId) {
-        List<HealthIndice> healthIndices = healthIndiceService.getAllHealthIndicesByUser(userId);
+    @GetMapping("/user")
+    public ResponseEntity<List<HealthIndice>> getAllHealthIndices(Authentication user) {
+        List<HealthIndice> healthIndices = healthIndiceService.getAllHealthIndicesByUser(user);
         return ResponseEntity.ok(healthIndices);
     }
 

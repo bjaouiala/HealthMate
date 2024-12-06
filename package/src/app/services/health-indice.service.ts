@@ -9,21 +9,21 @@ import { PredictionResponse } from '../models/prediction-response.model';
   providedIn: 'root',
 })
 export class HealthIndiceService {
-  private apiUrl = 'http://localhost:8094/api/v1/health-indices'; 
-  private predictUrl = 'http://localhost:8094/api/v1/predict'; // Adjust the URL for prediction
+  private apiUrl = 'http://localhost:8080/api/v1/health-indices';
+  private predictUrl = 'http://localhost:8080/api/v1/predict'; // Adjust the URL for prediction
   // Adjust as per your backend endpoint
 
   constructor(private http: HttpClient) {}
 
   // Create a new health indice
-  createHealthIndice(healthIndice: HealthIndice, userId: number): Observable<HealthIndice> {
+  createHealthIndice(healthIndice: HealthIndice): Observable<HealthIndice> {
     // POST request to create a health index with userId as a query parameter
-    return this.http.post<HealthIndice>(`${this.apiUrl}?userId=${userId}`, healthIndice);
+    return this.http.post<HealthIndice>(`${this.apiUrl}`, healthIndice);
   }
 
   // Get all health indices for a specific user
-  getHealthIndicesByUser(userId: number): Observable<HealthIndice[]> {
-    return this.http.get<HealthIndice[]>(`${this.apiUrl}/user/${userId}`);
+  getHealthIndicesByUser(): Observable<HealthIndice[]> {
+    return this.http.get<HealthIndice[]>(`${this.apiUrl}/user`);
   }
 
   // Get a single health indice by ID

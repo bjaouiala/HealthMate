@@ -6,14 +6,14 @@ import { HealthIndice } from 'src/app/models/health-indice.model';
 import { HealthIndiceService } from 'src/app/services/health-indice.service';
 import { MatTableModule } from '@angular/material/table';
 import { MatIconModule } from '@angular/material/icon';
-import { Router } from '@angular/router';
+import {Router, RouterLink} from '@angular/router';
 
 @Component({
   selector: 'app-list-health-indices',
   standalone: true,
   imports: [CommonModule,
- 
-  MatIconModule,MatTableModule,MatCardModule ],
+
+    MatIconModule, MatTableModule, MatCardModule, RouterLink],
   templateUrl: './list-health-indices.component.html',
   styleUrl: './list-health-indices.component.scss'
 })
@@ -31,13 +31,13 @@ export class ListHealthIndicesComponent implements OnInit {
   }
 
   loadHealthIndices(): void {
-    this.healthIndiceService.getHealthIndicesByUser(this.userId).subscribe(
-      (data) => {
-        console.log('API Response:', data); // Check if data contains id
-        this.healthIndices = data; // Assign data to healthIndices
-        console.log('Loaded health indices:', this.healthIndices); // Log loaded indices
-      },
-      (error) => console.error('Error loading health indices', error)
+    this.healthIndiceService.getHealthIndicesByUser().subscribe(
+      {
+        next : data => {
+      this.healthIndices = data;
+    }
+      }
+
     );
   }
 

@@ -21,7 +21,7 @@ export class NotificationService {
     }
 
     const headers = new HttpHeaders({
-      'Authorization': `Bearer ${token}`,
+      'Authorization': `Bearer  ${token}`,
     });
 
     return this.http.get<any>(this.apiUrl, { headers });

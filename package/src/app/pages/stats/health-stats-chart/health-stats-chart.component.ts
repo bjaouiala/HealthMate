@@ -9,17 +9,18 @@ import html2canvas from 'html2canvas';
 import jsPDF from 'jspdf';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import {RouterLink} from "@angular/router";
 
 @Component({
   selector: 'app-health-stats-chart',
   standalone: true,
-  imports: [FormsModule,CommonModule  ,MatIconModule, MatTableModule, MatCardModule],
+    imports: [FormsModule, CommonModule, MatIconModule, MatTableModule, MatCardModule, RouterLink],
   providers: [provideCharts(withDefaultRegisterables())],
   templateUrl: './health-stats-chart.component.html',
   styleUrls: ['./health-stats-chart.component.scss']
 })
 export class HealthStatsChartComponent implements OnInit {
-  
+
   private combinedChart: Chart | undefined;
   private individualCharts: Chart[] = []; // Array to hold individual chart instances
 
@@ -37,8 +38,8 @@ export class HealthStatsChartComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    const userId = 1; // Replace with dynamic user ID as needed
-    this.statsService.getHealthStats(userId).subscribe(data => {
+    // Replace with dynamic user ID as needed
+    this.statsService.getHealthStats().subscribe(data => {
       this.createCombinedChart(data);
       this.createIndividualCharts(data);
     });

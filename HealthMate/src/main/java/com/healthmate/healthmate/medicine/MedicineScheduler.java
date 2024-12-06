@@ -31,6 +31,7 @@ public class MedicineScheduler {
                 smsRequest.getMessage(),
                 LocalDateTime.now()
         );
+        System.out.println(notification);
         this.notificationRepository.save(notification);
     }
 }

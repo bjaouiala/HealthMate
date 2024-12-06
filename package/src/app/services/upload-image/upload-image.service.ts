@@ -15,19 +15,11 @@ export class UploadImageService {
   }
 
   uplaoadImage(file:File | null):Observable<any> {
-    const token = this.tokenService.token;
     const formData = new FormData();
 
-    if (!token) {
-      throw new Error('No authentication token available');
-    }
-
-    const headers = new HttpHeaders({
-      'Authorization': `Bearer ${token}`,
-    });
     if (file != null){
       formData.append("image",file);
     }
-    return this.http.post(this.apiUrl,formData,{ headers })
+    return this.http.post(this.apiUrl,formData)
   }
 }

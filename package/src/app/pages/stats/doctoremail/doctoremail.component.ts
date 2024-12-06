@@ -5,18 +5,18 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-import { Route, Router } from '@angular/router';
+import {Route, Router, RouterLink} from '@angular/router';
 import { StatsService } from 'src/app/services/stats.service';
 
 @Component({
   selector: 'app-doctoremail',
   standalone: true,
-  imports: [CommonModule,FormsModule,
- 
-    MatCardModule,
-    MatInputModule,
-    MatButtonModule,
-    MatFormFieldModule],
+    imports: [CommonModule, FormsModule,
+
+        MatCardModule,
+        MatInputModule,
+        MatButtonModule,
+        MatFormFieldModule, RouterLink],
   templateUrl: './doctoremail.component.html',
   styleUrl: './doctoremail.component.scss'
 })
@@ -44,8 +44,8 @@ export class DoctoremailComponent {
           this.router.navigate(['/stats']);        },
         error => {
           console.error('Error sending email', error);
-          this.router.navigate(['/stats']); 
-          
+          this.router.navigate(['/stats']);
+
         }
       );
     } else {
